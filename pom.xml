@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.github.rebue.pfm</groupId>
+  <artifactId>pfm</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <description>大卖后台</description>
+  
+  <modules>
+  	<module>pfm-api</module>
+  	<module>pfm-bll</module>
+  	<module>pfm-svr-feign</module>
+  	<module>pfm-gen</module>
+  	<module>pfm-svr</module>
+  </modules>
+  
+  
+   <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.github.rebue.pfm</groupId>
+				<artifactId>pfm-api</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.rebue.pfm</groupId>
+				<artifactId>pfm-bll</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+  
+</project>
