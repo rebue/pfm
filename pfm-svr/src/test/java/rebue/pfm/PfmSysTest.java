@@ -10,8 +10,10 @@ import rebue.wheel.OkhttpUtils;
 
 public class PfmSysTest {
 
-	private String hostUrl = "http://127.0.0.1:20182/pfm/sys";
-
+	//private String hostUrl = "http://127.0.0.1:20182/pfm/sys";
+	
+	private String hostUrl = "http://192.168.1.201/pfm-svr/pfm/sys";
+	
 	/**
 	 * 获取用户信息(通过用户ID)
 	 * 
@@ -19,7 +21,7 @@ public class PfmSysTest {
 	 */
 	@Test
 	public void getById() throws IOException {
-		String id = "aaa";
+		String id = "id";
 		String url = hostUrl + "/getbyid";
 		Map<String, Object> requestParams = new LinkedHashMap<>();
 		requestParams.put("id", id);
@@ -33,7 +35,7 @@ public class PfmSysTest {
 	 */
 	@Test
 	public void del() throws IOException {
-		String id = "aaa";
+		String id = "id";
 		String url = hostUrl;
 		Map<String, Object> requestParams = new LinkedHashMap<>();
 		requestParams.put("id", id);
