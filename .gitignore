@@ -1,12 +1,10 @@
-*.classpath
-*.properties
+.classpath
 .project
 target
 .settings
-*.pdb
-*.ldb
+.pdb
+.ldb
 *.log
 *.gz
-*.text
 *.log.gz
-*.[mf]
+*.class
