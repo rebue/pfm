@@ -1,6 +1,4 @@
 package rebue.pfm.ctrl;
-
-import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import rebue.pfm.mo.PfmSysMo;
 import rebue.pfm.svc.PfmSysSvc;
 import rebue.pfm.ro.PfmSysRo;
+import com.github.pagehelper.PageInfo;
+import java.util.List;
 import org.springframework.dao.DuplicateKeyException;
 
 @RestController
@@ -21,7 +21,8 @@ public class PfmSysCtrl {
 	/**
 	 * @mbg.generated
 	 */
-	private final static Logger _log = LoggerFactory.getLogger(PfmSysCtrl.class);
+	private final static Logger _log = LoggerFactory
+			.getLogger(PfmSysCtrl.class);
 
 	/**
 	 * @mbg.generated
@@ -30,7 +31,7 @@ public class PfmSysCtrl {
 	private PfmSysSvc svc;
 
 	/**
-	 * 删除大卖系统管理
+	 * 删除系统信息
 	 * 
 	 * @mbg.generated
 	 */
@@ -41,13 +42,13 @@ public class PfmSysCtrl {
 		int result = svc.del(id);
 		PfmSysRo ro = new PfmSysRo();
 		if (result < 1) {
-			_log.error("{}删除大卖系统管理失败");
-			ro.setMsg("删除大卖系统管理失败");
+			_log.error("{}删除系统信息失败");
+			ro.setMsg("删除系统信息失败");
 			ro.setResult((byte) -1);
 			return ro;
 		} else {
-			_log.info("{}删除大卖系统管理成功");
-			ro.setMsg("删除大卖系统管理成功");
+			_log.info("{}删除系统信息成功");
+			ro.setMsg("删除系统信息成功");
 			ro.setResult((byte) 1);
 			return ro;
 		}
@@ -55,20 +56,26 @@ public class PfmSysCtrl {
 	}
 
 	/**
+	 * 查询系统信息
 	 * 
-	 * 查询大卖系统管理
-	 * 
+	 * @mbg.generated
 	 */
 	@GetMapping("/pfm/sys")
-	List<PfmSysMo> list() {
-		_log.info("list查询大卖系统");
-		List<PfmSysMo> result = svc.listAll();
+	PageInfo<PfmSysMo> list(PfmSysMo mo, @RequestParam("pageNum") int pageNum,
+			@RequestParam("pageSize") int pageSize) {
+		_log.info("list PfmSysMo:" + mo + ", pageNum = " + pageNum
+				+ ", pageSize = " + pageSize);
+		if (pageSize > 50) {
+			String msg = "pageSize不能大于50";
+			_log.error(msg);
+			throw new IllegalArgumentException(msg);
+		}
+		PageInfo<PfmSysMo> result = svc.list(mo, pageNum, pageSize);
 		_log.info("result: " + result);
 		return result;
 	}
-
 	/**
-	 * 获取单个大卖系统管理
+	 * 获取单个系统信息
 	 * 
 	 * @mbg.generated
 	 */
@@ -79,18 +86,29 @@ public class PfmSysCtrl {
 		_log.info("get: " + result);
 		PfmSysRo ro = new PfmSysRo();
 		if (result == null) {
-			_log.error("{}获取单个大卖系统管理失败");
-			ro.setMsg("获取单个大卖系统管理失败");
+			_log.error("{}获取单个系统信息失败");
+			ro.setMsg("获取单个系统信息失败");
 			ro.setResult((byte) -1);
 			return ro;
 		} else {
-			_log.info("{}获取单个大卖系统管理成功");
-			ro.setMsg("获取单个大卖系统管理成功");
+			_log.info("{}获取单个系统信息成功");
+			ro.setMsg("获取单个系统信息成功");
 			ro.setResult((byte) 1);
 			ro.setRecord(result);
 			return ro;
 		}
 
+	}
+
+	/**
+	 * 查询大卖系统管理
+	 */
+	@GetMapping("/pfm/sys")
+	List<PfmSysMo> list() {
+		_log.info("list查询大卖系统");
+		List<PfmSysMo> result = svc.listAll();
+		_log.info("result: " + result);
+		return result;
 	}
 
 	/**
