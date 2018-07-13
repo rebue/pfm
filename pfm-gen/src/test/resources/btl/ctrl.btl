@@ -1,0 +1,180 @@
+package ${modulePackage}.ctrl;
+import javax.annotation.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import ${moClassFullName};
+import ${modulePackage}.svc.${entityName}Svc;
+import ${modulePackage}.ro.${entityName}Ro;
+import com.github.pagehelper.PageInfo;
+
+@RestController
+public class ${entityName}Ctrl {
+    /**
+     * @mbg.generated
+     */
+    private final static Logger _log = LoggerFactory.getLogger(${entityName}Ctrl.class);
+
+    /**
+     * @mbg.generated
+     */
+	@Resource
+    private ${entityName}Svc svc;
+
+    /**
+     * 添加${entityTitle}
+     * @mbg.generated
+     */
+    @PostMapping("/${strutil.toLowerCase(entityNamePrefix)}/${strutil.toLowerCase(entitySimpleName)}")
+     ${entityName}Ro add( @RequestBody  ${moClassShortName} mo) throws Exception {
+        _log.info("add ${moClassShortName}:" + mo);
+        int result = svc.add(mo);
+		${entityName}Ro ro=new ${entityName}Ro();
+		if(result<1){
+			_log.error("{}添加${entityTitle}失败");
+			ro.setMsg("添加${entityTitle}失败");
+        	ro.setResult((byte)-1);
+        	return ro;
+		}else{
+			_log.info("{}添加${entityTitle}成功");
+        	ro.setMsg("添加${entityTitle}成功");
+        	ro.setResult((byte)1);
+        	return ro;
+        }
+       
+    }
+
+    /**
+     * 修改${entityTitle}
+     * @mbg.generated
+     */
+    @PutMapping("/${strutil.toLowerCase(entityNamePrefix)}/${strutil.toLowerCase(entitySimpleName)}")
+    ${entityName}Ro modify( @RequestBody ${moClassShortName} mo) throws Exception {
+        _log.info("modify ${moClassShortName}:" + mo);
+        int result = svc.modify(mo);
+       	${entityName}Ro ro=new ${entityName}Ro();
+		if(result<1){
+			_log.error("{}修改${entityTitle}失败");
+			ro.setMsg("修改${entityTitle}失败");
+        	ro.setResult((byte)-1);
+        	return ro;
+		}else{
+			_log.info("{}修改${entityTitle}成功");
+        	ro.setMsg("修改${entityTitle}成功");
+        	ro.setResult((byte)1);
+        	return ro;
+        }
+    }
+
+    /**
+     * 删除${entityTitle}
+     * @mbg.generated
+     */
+    @DeleteMapping("/${strutil.toLowerCase(entityNamePrefix)}/${strutil.toLowerCase(entitySimpleName)}")
+    ${entityName}Ro del(<&
+		for(id in ids){
+			if(!idLP.first) {
+				print(', ');
+			}
+			print('@RequestParam("');
+		    print(id.key);
+		    print('") ');
+		    print(id.value);
+		    print(' ');
+		    print(id.key);
+		}
+	&>) {
+
+        _log.info("save ${moClassShortName}:" + <&
+			for(id in ids){
+				if(!idLP.first) {
+					print(', ');
+				}
+			    print(id.key);
+			}
+		&>);
+       int result= svc.del(<&
+			for(id in ids){
+				if(!idLP.first) {
+					print(', ');
+				}
+			    print(id.key);
+			}
+		&>);
+		
+		${entityName}Ro ro=new ${entityName}Ro();
+		if(result<1){
+			_log.error("{}删除${entityTitle}失败");
+			ro.setMsg("删除${entityTitle}失败");
+        	ro.setResult((byte)-1);
+        	return ro;
+		}else{
+			_log.info("{}删除${entityTitle}成功");
+        	ro.setMsg("删除${entityTitle}成功");
+        	ro.setResult((byte)1);
+        	return ro;
+        }
+
+    }
+
+    
+     /**
+     * 查询${entityTitle}
+     * @mbg.generated
+     */
+    @GetMapping("/${strutil.toLowerCase(entityNamePrefix)}/${strutil.toLowerCase(entitySimpleName)}")
+    PageInfo<${moClassShortName}> list(${moClassShortName} mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+    		_log.info("list ${moClassShortName}:" + mo+", pageNum = " + pageNum + ", pageSize = " + pageSize);
+        if (pageSize > 50) {
+            String msg = "pageSize不能大于50";
+            _log.error(msg);
+            throw new IllegalArgumentException(msg);
+        }
+        PageInfo<${moClassShortName}> result = svc.list(mo, pageNum, pageSize);
+        _log.info("result: " + result);
+        return result;
+    }
+    /**
+     * 获取单个${entityTitle}
+     * @mbg.generated
+     */
+    @GetMapping("/${strutil.toLowerCase(entityNamePrefix)}/${strutil.toLowerCase(entitySimpleName)}/getbyid")
+    ${entityName}Ro get(<&
+		for(id in ids){
+			if(!idLP.first) {
+				print(', ');
+			}
+			print('@RequestParam("');
+		    print(id.key);
+		    print('") ');
+		    print(id.value);
+		    print(' ');
+		    print(id.key);
+		}
+	&>) {
+        _log.info("get ${moClassShortName} by id: " + id);
+        ${moClassShortName} result = svc.getById(id);
+        _log.info("get: " + result);
+        ${entityName}Ro ro = new  ${entityName}Ro();
+        if(result==null){
+        	_log.error("{}获取单个${entityTitle}失败");
+        	ro.setMsg("获取单个${entityTitle}失败");
+        	ro.setResult((byte)-1);
+        	return ro;
+        }else{
+      	    _log.info("{}获取单个${entityTitle}成功");
+        	ro.setMsg("获取单个${entityTitle}成功");
+        	ro.setResult((byte)1);
+        	ro.setRecord(result);
+        	return ro;
+        }
+        
+    }
+
+}

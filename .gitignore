@@ -1,0 +1,12 @@
+*.classpath
+*.properties
+.project
+target
+.settings
+*.pdb
+*.ldb
+*.log
+*.gz
+*.text
+*.log.gz
+*.[mf]

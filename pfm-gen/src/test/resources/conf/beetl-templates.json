@@ -1,0 +1,26 @@
+[
+	{
+		"templateName": "svc.btl",
+		"targetDir": "../pfm-api/src/main/java/${modulePath}/svc/",
+		"targetFile": "${entityName}Svc.java",
+		"backup": false
+	},
+	{
+		"templateName": "svc-impl.btl",
+		"targetDir": "../pfm-bll/src/main/java/${modulePath}/svc/impl/",
+		"targetFile": "${entityName}SvcImpl.java",
+		"backup": false
+	},
+	{
+		"templateName": "ctrl.btl",
+		"targetDir": "../pfm-svr/src/main/java/${modulePath}/ctrl/",
+		"targetFile": "${entityName}Ctrl.java",
+		"backup": false
+	},
+	{
+		"templateName": "ro.btl",
+		"targetDir": "../pfm-api/src/main/java/${modulePath}/ro/",
+		"targetFile": "${entityName}Ro.java",
+		"backup": false
+	}
+]
