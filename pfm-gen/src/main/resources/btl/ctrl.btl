@@ -36,14 +36,16 @@ public class ${entityName}Ctrl {
         _log.info("add ${moClassShortName}:" + mo);
         int result = svc.add(mo);
 		${entityName}Ro ro=new ${entityName}Ro();
+		String fail="添加失败";
+		String success="添加成功";
 		if(result<1){
-			_log.error("{}添加${entityTitle}失败");
-			ro.setMsg("添加${entityTitle}失败");
+			_log.error(fail+"mo: {}",mo);
+			ro.setMsg(fail);
         	ro.setResult((byte)-1);
         	return ro;
 		}else{
-			_log.info("{}添加${entityTitle}成功");
-        	ro.setMsg("添加${entityTitle}成功");
+			_log.info( success+"mo: {}",mo);
+        	ro.setMsg(success);
         	ro.setResult((byte)1);
         	return ro;
         }
@@ -59,14 +61,16 @@ public class ${entityName}Ctrl {
         _log.info("modify ${moClassShortName}:" + mo);
         int result = svc.modify(mo);
        	${entityName}Ro ro=new ${entityName}Ro();
+       	String fail="修改失败";
+		String success="修改成功";
 		if(result<1){
-			_log.error("{}修改${entityTitle}失败");
-			ro.setMsg("修改${entityTitle}失败");
+			_log.error(fail+"mo: {}",mo);
+			ro.setMsg(fail);
         	ro.setResult((byte)-1);
         	return ro;
 		}else{
-			_log.info("{}修改${entityTitle}成功");
-        	ro.setMsg("修改${entityTitle}成功");
+			_log.info(success+"mo: {}",mo);
+        	ro.setMsg(success);
         	ro.setResult((byte)1);
         	return ro;
         }
@@ -109,14 +113,16 @@ public class ${entityName}Ctrl {
 		&>);
 		
 		${entityName}Ro ro=new ${entityName}Ro();
+		String fail="删除失败";
+		String success="删除成功";
 		if(result<1){
-			_log.error("{}删除${entityTitle}失败");
-			ro.setMsg("删除${entityTitle}失败");
+			_log.error("找不到该记录id: {}",id);
+			ro.setMsg(fail);
         	ro.setResult((byte)-1);
         	return ro;
 		}else{
-			_log.info("{}删除${entityTitle}成功");
-        	ro.setMsg("删除${entityTitle}成功");
+			_log.info(success+"id: {}",id);
+        	ro.setMsg(success);
         	ro.setResult((byte)1);
         	return ro;
         }
@@ -145,7 +151,7 @@ public class ${entityName}Ctrl {
      * @mbg.generated
      */
     @GetMapping("/${strutil.toLowerCase(entityNamePrefix)}/${strutil.toLowerCase(entitySimpleName)}/getbyid")
-    ${entityName}Ro get(<&
+    ${entityName}Ro getById(<&
 		for(id in ids){
 			if(!idLP.first) {
 				print(', ');
@@ -162,14 +168,16 @@ public class ${entityName}Ctrl {
         ${moClassShortName} result = svc.getById(id);
         _log.info("get: " + result);
         ${entityName}Ro ro = new  ${entityName}Ro();
+        String fail="获取失败";
+		String success="获取成功";
         if(result==null){
-        	_log.error("{}获取单个${entityTitle}失败");
-        	ro.setMsg("获取单个${entityTitle}失败");
+        	_log.error("没有该条记录id： {}",id);
+        	ro.setMsg(fail);
         	ro.setResult((byte)-1);
         	return ro;
         }else{
-      	    _log.info("{}获取单个${entityTitle}成功");
-        	ro.setMsg("获取单个${entityTitle}成功");
+      	    _log.info(success+"id: {}",id);
+        	ro.setMsg(success);
         	ro.setResult((byte)1);
         	ro.setRecord(result);
         	return ro;
