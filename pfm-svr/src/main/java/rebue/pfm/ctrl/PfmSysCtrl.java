@@ -132,26 +132,6 @@ public class PfmSysCtrl {
 	}
 
 	/**
-	 * 查询系统信息
-	 * 
-	 * @mbg.generated
-	 */
-	@GetMapping("/pfm/sys")
-	PageInfo<PfmSysMo> list(PfmSysMo mo, @RequestParam("pageNum") int pageNum,
-			@RequestParam("pageSize") int pageSize) {
-		_log.info("list PfmSysMo:" + mo + ", pageNum = " + pageNum
-				+ ", pageSize = " + pageSize);
-		if (pageSize > 50) {
-			String msg = "pageSize不能大于50";
-			_log.error(msg);
-			throw new IllegalArgumentException(msg);
-		}
-		PageInfo<PfmSysMo> result = svc.list(mo, pageNum, pageSize);
-		_log.info("result: " + result);
-		return result;
-	}
-
-	/**
 	 * 获取单个系统信息
 	 * 
 	 * @mbg.generated
