@@ -2,6 +2,9 @@ package rebue.pfm.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+
 import rebue.pfm.mo.PfmActiMo;
 import rebue.robotech.mapper.MybatisBaseMapper;
 
@@ -86,4 +89,7 @@ public interface PfmActiMapper extends MybatisBaseMapper<PfmActiMo, Long> {
      * @mbg.generated 2018-07-24 10:36:03
      */
     boolean existSelective(PfmActiMo record);
+    
+    @Update("UPDATE PFM_ACTI SET IS_ENABLED=#{isEnabled,jdbcType=TINYINT} WHERE ID=#{id,jdbcType=BIGINT}")
+    int enabledActionOrNot(@Param("id") Long id, @Param("isEnabled") boolean isEnabled);
 }
