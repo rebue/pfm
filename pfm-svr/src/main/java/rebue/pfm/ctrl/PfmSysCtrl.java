@@ -21,11 +21,10 @@ import rebue.pfm.svc.PfmSysSvc;
 
 @RestController
 public class PfmSysCtrl {
-
     /**
      * @mbg.generated
      */
-    private static final Logger _log             = LoggerFactory.getLogger(PfmSysCtrl.class);
+    private final static Logger _log             = LoggerFactory.getLogger(PfmSysCtrl.class);
 
     /**
      * @mbg.generated
@@ -63,7 +62,7 @@ public class PfmSysCtrl {
                 return ro;
             }
         } catch (DuplicateKeyException e) {
-            String msg = "添加失败，" + _uniqueFilesName + "已存在不允许出现重复";
+            String msg = "添加失败，" + _uniqueFilesName + "已存在，不允许出现重复";
             _log.error("{}: mo-{}", msg, mo);
             ro.setMsg(msg);
             ro.setResult((byte) -1);
@@ -96,7 +95,7 @@ public class PfmSysCtrl {
                 return ro;
             }
         } catch (DuplicateKeyException e) {
-            String msg = "修改失败，" + _uniqueFilesName + "已存在不允许出现重复";
+            String msg = "修改失败，" + _uniqueFilesName + "已存在，不允许出现重复";
             _log.error("{}: mo-{}", msg, mo);
             ro.setMsg(msg);
             ro.setResult((byte) -1);
@@ -106,7 +105,7 @@ public class PfmSysCtrl {
 
     /**
      * 删除系统信息
-     *
+     * 
      * @mbg.generated
      */
     @DeleteMapping("/pfm/sys")
@@ -131,7 +130,7 @@ public class PfmSysCtrl {
 
     /**
      * 获取单个系统信息
-     *
+     * 
      * @mbg.generated
      */
     @GetMapping("/pfm/sys/getbyid")
@@ -158,15 +157,15 @@ public class PfmSysCtrl {
 
     /**
      * 查询大卖系统管理
-     *
+     * 
      * @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/sys")
     List<PfmSysMo> list() {
         _log.info("list查询大卖系统");
-        // 测试注释
         List<PfmSysMo> result = svc.listAll();
         _log.info("result: " + result);
         return result;
     }
+
 }

@@ -4,6 +4,7 @@
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
 
+
 <o:RootObject Id="o1">
 <c:Children>
 <o:Model Id="o2">

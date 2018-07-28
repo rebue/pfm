@@ -3,7 +3,6 @@
 /* Created on:     2018/7/28 11:43:53                           */
 /*==============================================================*/
 
-
 drop table if exists PFM_ACTI;
 
 drop table if exists PFM_ACTI_MENU;
