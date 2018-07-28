@@ -1,12 +1,11 @@
 package rebue.pfm.svc.impl;
 
-import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import rebue.pfm.mapper.PfmSysMapper;
-import rebue.pfm.mo.PfmSysMo;
-import rebue.pfm.svc.PfmSysSvc;
+import rebue.pfm.mapper.PfmUserRoleMapper;
+import rebue.pfm.mo.PfmUserRoleMo;
+import rebue.pfm.svc.PfmUserRoleSvc;
 import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
 
 @Service
@@ -22,17 +21,17 @@ import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
  * </pre>
  */
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-public class PfmSysSvcImpl extends MybatisBaseSvcImpl<PfmSysMo, java.lang.String, PfmSysMapper> implements PfmSysSvc {
+public class PfmUserRoleSvcImpl extends MybatisBaseSvcImpl<PfmUserRoleMo, java.lang.Long, PfmUserRoleMapper> implements PfmUserRoleSvc {
 
     /**
      * @mbg.generated
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public int add(PfmSysMo mo) {
+    public int add(PfmUserRoleMo mo) {
         // 如果id为空那么自动生成分布式id
-        if (mo.getId() == null || mo.getId().trim().isEmpty()) {
-            mo.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+        if (mo.getId() == null || mo.getId() == 0) {
+            mo.setId(_idWorker.getId());
         }
         return super.add(mo);
     }

@@ -3,24 +3,28 @@
 		"templateName": "svc.btl",
 		"targetDir": "../pfm-api/src/main/java/${modulePath}/svc/",
 		"targetFile": "${entityName}Svc.java",
+		"isGenTargetOnMiddleTable": true,
 		"backup": false
 	},
 	{
 		"templateName": "svc-impl.btl",
 		"targetDir": "../pfm-bll/src/main/java/${modulePath}/svc/impl/",
 		"targetFile": "${entityName}SvcImpl.java",
+		"isGenTargetOnMiddleTable": true,
 		"backup": false
 	},
 	{
 		"templateName": "ctrl.btl",
 		"targetDir": "../pfm-svr/src/main/java/${modulePath}/ctrl/",
 		"targetFile": "${entityName}Ctrl.java",
+		"isGenTargetOnMiddleTable": true,
 		"backup": false
 	},
 	{
 		"templateName": "ro.btl",
 		"targetDir": "../pfm-api/src/main/java/${modulePath}/ro/",
 		"targetFile": "${entityName}Ro.java",
+		"isGenTargetOnMiddleTable": true,
 		"backup": false
 	}
 ]

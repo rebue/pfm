@@ -1,7 +1,6 @@
 package rebue.pfm.ctrl;
 
 import com.github.pagehelper.PageInfo;
-import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,24 +12,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import rebue.pfm.mo.PfmActiUrnMo;
-import rebue.pfm.ro.PfmActiUrnRo;
-import rebue.pfm.svc.PfmActiUrnSvc;
-import rebue.pfm.to.PfmModifyActiUrnTo;
+import rebue.pfm.mo.PfmUserRoleMo;
+import rebue.pfm.ro.PfmUserRoleRo;
+import rebue.pfm.svc.PfmUserRoleSvc;
 
 @RestController
-public class PfmActiUrnCtrl {
+public class PfmUserRoleCtrl {
 
     /**
      * @mbg.generated
      */
-    private static final Logger _log = LoggerFactory.getLogger(PfmActiUrnCtrl.class);
+    private static final Logger _log = LoggerFactory.getLogger(PfmUserRoleCtrl.class);
 
     /**
      * @mbg.generated
      */
     @Resource
-    private PfmActiUrnSvc svc;
+    private PfmUserRoleSvc svc;
 
     /**
      * 有唯一约束的字段名称
@@ -40,14 +38,14 @@ public class PfmActiUrnCtrl {
     private String _uniqueFilesName = "某字段内容";
 
     /**
-     * 添加动作URN
+     * 添加用户角色
      *
      * @mbg.generated
      */
-    @PostMapping("/pfm/actiurn")
-    PfmActiUrnRo add(@RequestBody PfmActiUrnMo mo) throws Exception {
-        _log.info("add PfmActiUrnMo:" + mo);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+    @PostMapping("/pfm/userrole")
+    PfmUserRoleRo add(@RequestBody PfmUserRoleMo mo) throws Exception {
+        _log.info("add PfmUserRoleMo:" + mo);
+        PfmUserRoleRo ro = new PfmUserRoleRo();
         try {
             int result = svc.add(mo);
             if (result == 1) {
@@ -73,14 +71,14 @@ public class PfmActiUrnCtrl {
     }
 
     /**
-     * 修改动作URN
+     * 修改用户角色
      *
      * @mbg.generated
      */
-    @PutMapping("/pfm/actiurn")
-    PfmActiUrnRo modify(@RequestBody PfmActiUrnMo mo) throws Exception {
-        _log.info("modify PfmActiUrnMo:" + mo);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+    @PutMapping("/pfm/userrole")
+    PfmUserRoleRo modify(@RequestBody PfmUserRoleMo mo) throws Exception {
+        _log.info("modify PfmUserRoleMo:" + mo);
+        PfmUserRoleRo ro = new PfmUserRoleRo();
         try {
             int result = svc.modify(mo);
             if (result == 1) {
@@ -106,15 +104,15 @@ public class PfmActiUrnCtrl {
     }
 
     /**
-     * 删除动作URN
+     * 删除用户角色
      *
      * @mbg.generated
      */
-    @DeleteMapping("/pfm/actiurn")
-    PfmActiUrnRo del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmActiUrnMo:" + id);
+    @DeleteMapping("/pfm/userrole")
+    PfmUserRoleRo del(@RequestParam("id") java.lang.Long id) {
+        _log.info("save PfmUserRoleMo:" + id);
         int result = svc.del(id);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+        PfmUserRoleRo ro = new PfmUserRoleRo();
         if (result == 1) {
             String msg = "删除成功";
             _log.info("{}: id-{}", msg, id);
@@ -131,34 +129,34 @@ public class PfmActiUrnCtrl {
     }
 
     /**
-     * 查询动作URN
+     * 查询用户角色
      *
      * @mbg.generated
      */
-    @GetMapping("/pfm/actiurn")
-    PageInfo<PfmActiUrnMo> list(PfmActiUrnMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
-        _log.info("list PfmActiUrnMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
+    @GetMapping("/pfm/userrole")
+    PageInfo<PfmUserRoleMo> list(PfmUserRoleMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+        _log.info("list PfmUserRoleMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
         if (pageSize > 50) {
             String msg = "pageSize不能大于50";
             _log.error(msg);
             throw new IllegalArgumentException(msg);
         }
-        PageInfo<PfmActiUrnMo> result = svc.list(mo, pageNum, pageSize);
+        PageInfo<PfmUserRoleMo> result = svc.list(mo, pageNum, pageSize);
         _log.info("result: " + result);
         return result;
     }
 
     /**
-     * 获取单个动作URN
+     * 获取单个用户角色
      *
      * @mbg.generated
      */
-    @GetMapping("/pfm/actiurn/getbyid")
-    PfmActiUrnRo getById(@RequestParam("id") java.lang.Long id) {
-        _log.info("get PfmActiUrnMo by id: " + id);
-        PfmActiUrnMo result = svc.getById(id);
+    @GetMapping("/pfm/userrole/getbyid")
+    PfmUserRoleRo getById(@RequestParam("id") java.lang.Long id) {
+        _log.info("get PfmUserRoleMo by id: " + id);
+        PfmUserRoleMo result = svc.getById(id);
         _log.info("get: " + result);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+        PfmUserRoleRo ro = new PfmUserRoleRo();
         if (result == null) {
             String msg = "获取失败，没有找到该条记录";
             _log.error("{}: id-{}", msg, id);
@@ -173,34 +171,5 @@ public class PfmActiUrnCtrl {
             ro.setRecord(result);
             return ro;
         }
-    }
-
-    /**
-     *  修改动作URN
-     */
-    @SuppressWarnings("finally")
-    @PutMapping("/pfm/actiurn")
-    PfmActiUrnRo modify(@RequestBody PfmModifyActiUrnTo to) throws Exception {
-        _log.info("modify PfmActiUrnMo:" + to);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
-        try {
-            ro = svc.exModify(to);
-            _log.info("设置动作链接成功");
-        } catch (RuntimeException e) {
-            String msg = e.getMessage();
-            ro.setResult((byte) -1);
-            ro.setMsg(msg);
-        } finally {
-            return ro;
-        }
-    }
-
-    /**
-     *  查询动作URN
-     */
-    @GetMapping("/pfm/actiurn")
-    List<PfmActiUrnMo> list(PfmActiUrnMo mo) {
-        _log.info("list PfmActiUrnMo:" + mo);
-        return svc.list(mo);
     }
 }

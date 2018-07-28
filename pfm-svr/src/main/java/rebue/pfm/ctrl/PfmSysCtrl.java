@@ -1,9 +1,7 @@
 package rebue.pfm.ctrl;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -14,28 +12,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import rebue.pfm.mo.PfmSysMo;
 import rebue.pfm.ro.PfmSysRo;
 import rebue.pfm.svc.PfmSysSvc;
 
 @RestController
 public class PfmSysCtrl {
+
     /**
      * @mbg.generated
      */
-    private final static Logger _log             = LoggerFactory.getLogger(PfmSysCtrl.class);
+    private static final Logger _log = LoggerFactory.getLogger(PfmSysCtrl.class);
 
     /**
      * @mbg.generated
      */
     @Resource
-    private PfmSysSvc           svc;
-
-    /**
-     * 有唯一约束的字段名称
-     */
-    private String              _uniqueFilesName = "系统名称";
+    private PfmSysSvc svc;
 
     /**
      * 添加系统信息
@@ -105,7 +98,7 @@ public class PfmSysCtrl {
 
     /**
      * 删除系统信息
-     * 
+     *
      * @mbg.generated
      */
     @DeleteMapping("/pfm/sys")
@@ -130,7 +123,7 @@ public class PfmSysCtrl {
 
     /**
      * 获取单个系统信息
-     * 
+     *
      * @mbg.generated
      */
     @GetMapping("/pfm/sys/getbyid")
@@ -156,8 +149,13 @@ public class PfmSysCtrl {
     }
 
     /**
+     * 有唯一约束的字段名称
+     */
+    private String _uniqueFilesName = "系统名称";
+
+    /**
      * 查询大卖系统管理
-     * 
+     *
      * @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/sys")
@@ -167,5 +165,4 @@ public class PfmSysCtrl {
         _log.info("result: " + result);
         return result;
     }
-
 }
