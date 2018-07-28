@@ -45,6 +45,7 @@ public class PfmRoleActiSvcImpl extends MybatisBaseSvcImpl<PfmRoleActiMo, java.l
 
     /**
      *  查询角色功能信息
+     *  @mbg.overrideByMethodName
      */
     @Override
     public List<PfmRoleActiMo> list(PfmRoleActiMo mo) {
@@ -56,6 +57,7 @@ public class PfmRoleActiSvcImpl extends MybatisBaseSvcImpl<PfmRoleActiMo, java.l
      *  设置角色动作
      *  @param to
      *  @return
+     *  @mbg.overrideByMethodName
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)

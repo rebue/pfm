@@ -164,6 +164,9 @@ public class PfmRoleActiCtrl {
         }
     }
 
+    /**
+     * @mbg.generated
+     */
     private static final Logger _log = LoggerFactory.getLogger(PfmRoleActiCtrl.class);
 
     @Resource
@@ -174,6 +177,7 @@ public class PfmRoleActiCtrl {
      *
      *  @param mo
      *  @return
+     *  @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/roleacti")
     List<PfmRoleActiMo> list(PfmRoleActiMo mo) {
@@ -185,6 +189,7 @@ public class PfmRoleActiCtrl {
      *  设置角色动作
      *  @param to
      *  @return
+     *  @mbg.overrideByMethodName
      */
     @PutMapping("/pfm/roleacti")
     PfmRoleActiRo modify(@RequestBody PfmModifyRoleActiTo to) {

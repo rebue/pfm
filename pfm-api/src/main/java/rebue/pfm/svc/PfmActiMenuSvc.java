@@ -16,6 +16,7 @@ public interface PfmActiMenuSvc extends MybatisBaseSvc<PfmActiMenuMo, java.lang.
      *  查询动作菜单
      *  @param mo
      *  @return
+     *  @mbg.overrideByMethodName
      */
     List<PfmActiMenuMo> list(PfmActiMenuMo mo);
 
@@ -23,6 +24,7 @@ public interface PfmActiMenuSvc extends MybatisBaseSvc<PfmActiMenuMo, java.lang.
      *  设置动作菜单
      *  @param to
      *  @return
+     *  @mbg.overrideByMethodName
      */
     PfmActiMenuRo modify(PfmModifyActimenuTo to);
 }

@@ -19,5 +19,5 @@ public interface PfmMenuSvc extends MybatisBaseSvc<PfmMenuMo, java.lang.Long> {
      *  @param id
      *  @return
      */
-    PfmMenuRo exDel(long id);
+    PfmMenuRo delEx(long id);
 }

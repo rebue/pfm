@@ -56,7 +56,7 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public PfmFuncRo exDel(long id) {
+    public PfmFuncRo delEx(long id) {
         _log.info("删除功能的参数为：｛｝", id);
         PfmFuncRo funcRo = new PfmFuncRo();
         // 根据功能ｉｄ查询所有动作

@@ -53,6 +53,7 @@ public class PfmActiMenuSvcImpl extends MybatisBaseSvcImpl<PfmActiMenuMo, java.l
      *
      *  @param mo
      *  @return
+     *  @mbg.overrideByMethodName
      */
     @Override
     public List<PfmActiMenuMo> list(PfmActiMenuMo mo) {
@@ -65,6 +66,7 @@ public class PfmActiMenuSvcImpl extends MybatisBaseSvcImpl<PfmActiMenuMo, java.l
      *
      *  @param to
      *  @return
+     *  @mbg.overrideByMethodName
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)

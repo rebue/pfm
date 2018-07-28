@@ -13,5 +13,5 @@ public interface PfmActiUrnSvc extends MybatisBaseSvc<PfmActiUrnMo, java.lang.Lo
      *  @param to
      *  @return
      */
-    PfmActiUrnRo exModify(PfmModifyActiUrnTo to);
+    PfmActiUrnRo modifyEx(PfmModifyActiUrnTo to);
 }

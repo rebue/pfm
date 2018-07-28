@@ -177,6 +177,7 @@ public class PfmActiUrnCtrl {
 
     /**
      *  修改动作URN
+     *  @mbg.overrideByMethodName
      */
     @SuppressWarnings("finally")
     @PutMapping("/pfm/actiurn")
@@ -184,7 +185,7 @@ public class PfmActiUrnCtrl {
         _log.info("modify PfmActiUrnMo:" + to);
         PfmActiUrnRo ro = new PfmActiUrnRo();
         try {
-            ro = svc.exModify(to);
+            ro = svc.modifyEx(to);
             _log.info("设置动作链接成功");
         } catch (RuntimeException e) {
             String msg = e.getMessage();
@@ -197,6 +198,7 @@ public class PfmActiUrnCtrl {
 
     /**
      *  查询动作URN
+     *  @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/actiurn")
     List<PfmActiUrnMo> list(PfmActiUrnMo mo) {

@@ -11,7 +11,7 @@ public interface PfmFuncSvc extends MybatisBaseSvc<PfmFuncMo, java.lang.Long> {
      *  @param id
      *  @return
      */
-    PfmFuncRo exDel(long id);
+    PfmFuncRo delEx(long id);
 
     /**
      *  设置是否启用功能

@@ -155,7 +155,7 @@ public class PfmMenuCtrl {
     @DeleteMapping("/pfm/menu")
     PfmMenuRo del(@RequestParam("id") java.lang.Long id) {
         _log.info("save PfmMenuMo:" + id);
-        return svc.exDel(id);
+        return svc.delEx(id);
     }
 
     /**

@@ -10,6 +10,7 @@ public interface PfmRoleActiSvc extends MybatisBaseSvc<PfmRoleActiMo, java.lang.
 
     /**
      *  查询角色功能
+     *  @mbg.overrideByMethodName
      */
     List<PfmRoleActiMo> list(PfmRoleActiMo mo);
 
@@ -17,6 +18,7 @@ public interface PfmRoleActiSvc extends MybatisBaseSvc<PfmRoleActiMo, java.lang.
      *  设置角色动作
      *  @param to
      *  @return
+     *  @mbg.overrideByMethodName
      */
     PfmRoleActiRo modify(PfmModifyRoleActiTo to);
 }

@@ -42,6 +42,9 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
         return super.add(mo);
     }
 
+    /**
+     * @mbg.generated
+     */
     private final Logger _log = LoggerFactory.getLogger(PfmActiSvcImpl.class);
 
     @Resource

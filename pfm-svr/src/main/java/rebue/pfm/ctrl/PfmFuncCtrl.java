@@ -159,7 +159,7 @@ public class PfmFuncCtrl {
     PfmFuncRo del(@RequestParam("id") java.lang.Long id) {
         _log.info("save PfmFuncMo:" + id);
         try {
-            return svc.exDel(id);
+            return svc.delEx(id);
         } catch (RuntimeException e) {
             PfmFuncRo funcRo = new PfmFuncRo();
             String msg = e.getMessage();

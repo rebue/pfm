@@ -49,7 +49,7 @@ public class PfmActiUrnSvcImpl extends MybatisBaseSvcImpl<PfmActiUrnMo, java.lan
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public PfmActiUrnRo exModify(PfmModifyActiUrnTo to) {
+    public PfmActiUrnRo modifyEx(PfmModifyActiUrnTo to) {
         _log.info("修改动作链接的参数为：｛｝", to);
         PfmActiUrnRo ro = new PfmActiUrnRo();
         // 根据动作ｉｄ删除所有动作链接

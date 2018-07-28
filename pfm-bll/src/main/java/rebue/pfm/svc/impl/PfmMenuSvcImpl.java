@@ -77,7 +77,7 @@ public class PfmMenuSvcImpl extends MybatisBaseSvcImpl<PfmMenuMo, java.lang.Long
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public PfmMenuRo exDel(long id) {
+    public PfmMenuRo delEx(long id) {
         PfmMenuRo menuRo = new PfmMenuRo();
         _log.info("删除菜单的请求参数为： {}", id);
         _log.info("删除菜单查询菜单信息的参数为：｛｝", id);
