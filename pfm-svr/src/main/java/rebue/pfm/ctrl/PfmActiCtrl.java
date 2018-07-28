@@ -150,6 +150,7 @@ public class PfmActiCtrl {
 
     /**
      *  删除动作信息
+     *   @mbg.overrideByMethodName
      */
     @DeleteMapping("/pfm/acti")
     PfmActiRo del(@RequestParam("id") java.lang.Long id) {
