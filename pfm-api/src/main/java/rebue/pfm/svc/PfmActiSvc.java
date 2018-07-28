@@ -12,7 +12,7 @@ public interface PfmActiSvc extends MybatisBaseSvc<PfmActiMo, java.lang.Long> {
 	 * @param id
 	 * @return
 	 */
-	PfmActiRo exDel(long id);
+	PfmActiRo delEx(long id);
 
 	/**
 	 * 设置是否启用动作

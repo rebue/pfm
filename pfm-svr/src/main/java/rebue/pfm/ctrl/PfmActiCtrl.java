@@ -111,7 +111,7 @@ public class PfmActiCtrl {
 	@DeleteMapping("/pfm/acti")
 	PfmActiRo del(@RequestParam("id") java.lang.Long id) {
 		_log.info("save PfmActiMo:" + id);
-		return svc.exDel(id);
+		return svc.delEx(id);
 	}
 
 	/**

@@ -61,7 +61,7 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
 	 */
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public PfmActiRo exDel(long id) {
+	public PfmActiRo delEx(long id) {
 		PfmActiRo ro = new PfmActiRo();
 		_log.info("删除动作的参数为：｛｝", id);
 		_log.info("删除动作链接的参数为：｛｝", id);

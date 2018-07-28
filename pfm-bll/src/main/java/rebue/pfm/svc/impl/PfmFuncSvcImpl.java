@@ -72,7 +72,7 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
 		_log.info("删除功能根据功能ｉｄ查询动作的返回值为：｛｝", String.valueOf(actiList));
 		if (actiList.size() != 0) {
 			for (int i = 0; i < actiList.size(); i++) {
-				PfmActiRo actiRo = pfmActiSvc.exDel(actiList.get(i).getId());
+				PfmActiRo actiRo = pfmActiSvc.delEx(actiList.get(i).getId());
 				if (actiRo.getResult() != 1) {
 					_log.error("删除功能删除动作时，出现错误，功能ｉｄ为：｛｝", id);
 					throw new RuntimeException("删除动作失败");
