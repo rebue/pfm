@@ -42,10 +42,7 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
         return super.add(mo);
     }
 
-    /**
-     * @mbg.generated
-     */
-    private final Logger _log = LoggerFactory.getLogger(PfmActiSvcImpl.class);
+    private static final Logger _log = LoggerFactory.getLogger(PfmActiSvcImpl.class);
 
     @Resource
     private PfmActiUrnMapper pfmActiUrnMapper;
@@ -54,9 +51,10 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
     private PfmActiMenuMapper pfmActiMenuMapper;
 
     /**
-     *  删除动作
-     *  @param id
-     *  @return
+     * 删除动作
+     *
+     * @param id
+     * @return
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -84,9 +82,10 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
     }
 
     /**
-     *  设置是否启用动作
-     *  @param mo
-     *  @return
+     * 设置是否启用动作
+     *
+     * @param mo
+     * @return
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)

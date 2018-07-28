@@ -1,6 +1,5 @@
 package rebue.pfm.ctrl;
 
-import com.github.pagehelper.PageInfo;
 import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -20,6 +19,11 @@ import rebue.pfm.to.PfmModifyRoleActiTo;
 
 @RestController
 public class PfmRoleActiCtrl {
+
+    /**
+     * @mbg.generated
+     */
+    private static final Logger _log = LoggerFactory.getLogger(PfmRoleActiCtrl.class);
 
     /**
      * 有唯一约束的字段名称
@@ -62,39 +66,6 @@ public class PfmRoleActiCtrl {
     }
 
     /**
-     * 修改角色动作
-     *
-     * @mbg.generated
-     */
-    @PutMapping("/pfm/roleacti")
-    PfmRoleActiRo modify(@RequestBody PfmRoleActiMo mo) throws Exception {
-        _log.info("modify PfmRoleActiMo:" + mo);
-        PfmRoleActiRo ro = new PfmRoleActiRo();
-        try {
-            int result = svc.modify(mo);
-            if (result == 1) {
-                String msg = "修改成功";
-                _log.info("{}: mo-{}", msg, mo);
-                ro.setMsg(msg);
-                ro.setResult((byte) 1);
-                return ro;
-            } else {
-                String msg = "修改失败";
-                _log.error("{}: mo-{}", msg, mo);
-                ro.setMsg(msg);
-                ro.setResult((byte) -1);
-                return ro;
-            }
-        } catch (DuplicateKeyException e) {
-            String msg = "修改失败，" + _uniqueFilesName + "已存在，不允许出现重复";
-            _log.error("{}: mo-{}", msg, mo);
-            ro.setMsg(msg);
-            ro.setResult((byte) -1);
-            return ro;
-        }
-    }
-
-    /**
      * 删除角色动作
      *
      * @mbg.generated
@@ -117,24 +88,6 @@ public class PfmRoleActiCtrl {
             ro.setResult((byte) -1);
             return ro;
         }
-    }
-
-    /**
-     * 查询角色动作
-     *
-     * @mbg.generated
-     */
-    @GetMapping("/pfm/roleacti")
-    PageInfo<PfmRoleActiMo> list(PfmRoleActiMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
-        _log.info("list PfmRoleActiMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
-        if (pageSize > 50) {
-            String msg = "pageSize不能大于50";
-            _log.error(msg);
-            throw new IllegalArgumentException(msg);
-        }
-        PageInfo<PfmRoleActiMo> result = svc.list(mo, pageNum, pageSize);
-        _log.info("result: " + result);
-        return result;
     }
 
     /**
@@ -163,11 +116,6 @@ public class PfmRoleActiCtrl {
             return ro;
         }
     }
-
-    /**
-     * @mbg.generated
-     */
-    private static final Logger _log = LoggerFactory.getLogger(PfmRoleActiCtrl.class);
 
     @Resource
     private PfmRoleActiSvc svc;
