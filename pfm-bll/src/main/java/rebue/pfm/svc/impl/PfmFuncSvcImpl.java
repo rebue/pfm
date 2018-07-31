@@ -31,105 +31,105 @@ import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long, PfmFuncMapper> implements PfmFuncSvc {
 
-	/**
-	 * @mbg.overrideByMethodName
-	 */
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public int add(PfmFuncMo mo) {
-		// 如果id为空那么自动生成分布式id
-		if (mo.getId() == null || mo.getId() == 0) {
-			mo.setId(_idWorker.getId());
-		}
-		if (mo.getOrderNo() == null || mo.getOrderNo() == 0) {
-			mo.setOrderNo((byte) 1);
-		}
-		return super.add(mo);
-	}
+    /**
+     *  @mbg.overrideByMethodName
+     */
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public int add(PfmFuncMo mo) {
+        // 如果id为空那么自动生成分布式id
+        if (mo.getId() == null || mo.getId() == 0) {
+            mo.setId(_idWorker.getId());
+        }
+        if (mo.getOrderNo() == null || mo.getOrderNo() == 0) {
+            mo.setOrderNo((byte) 1);
+        }
+        return super.add(mo);
+    }
 
-	private final Logger _log = LoggerFactory.getLogger(PfmFuncSvcImpl.class);
+    private final Logger _log = LoggerFactory.getLogger(PfmFuncSvcImpl.class);
 
-	@Resource
-	private PfmActiSvc pfmActiSvc;
+    @Resource
+    private PfmActiSvc pfmActiSvc;
 
-	/**
-	 * 删除功能
-	 * 
-	 * @param id
-	 * @return
-	 */
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public PfmFuncRo delEx(long id) {
-		_log.info("删除功能的参数为：｛｝", id);
-		PfmFuncRo funcRo = new PfmFuncRo();
-		// 根据功能ｉｄ查询所有动作
-		PfmActiMo actiMo = new PfmActiMo();
-		actiMo.setFuncId(id);
-		_log.info("删除功能根据功能ｉｄ查询动作的参数为：{}", actiMo);
-		List<PfmActiMo> actiList = pfmActiSvc.list(actiMo);
-		_log.info("删除功能根据功能ｉｄ查询动作的返回值为：｛｝", String.valueOf(actiList));
-		if (actiList.size() != 0) {
-			for (int i = 0; i < actiList.size(); i++) {
-				PfmActiRo actiRo = pfmActiSvc.delEx(actiList.get(i).getId());
-				if (actiRo.getResult() != 1) {
-					_log.error("删除功能删除动作时，出现错误，功能ｉｄ为：｛｝", id);
-					throw new RuntimeException("删除动作失败");
-				}
-			}
-		}
-		_log.info("删除功能的参数为：{}", id);
-		int delResult = del(id);
-		_log.info("删除功能的返回值为：｛｝", delResult);
-		if (delResult != 1) {
-			_log.error("删除功能失败，功能ｉｄ为：｛｝", id);
-			throw new RuntimeException("删除功能失败");
-		}
-		_log.info("删除功能成功，功能ｉｄ为｛｝", id);
-		funcRo.setResult((byte) 1);
-		funcRo.setMsg("删除成功");
-		return funcRo;
-	}
+    /**
+     *  删除功能
+     *
+     *  @param id
+     *  @return
+     */
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public PfmFuncRo delEx(long id) {
+        _log.info("删除功能的参数为：｛｝", id);
+        PfmFuncRo funcRo = new PfmFuncRo();
+        // 根据功能ｉｄ查询所有动作
+        PfmActiMo actiMo = new PfmActiMo();
+        actiMo.setFuncId(id);
+        _log.info("删除功能根据功能ｉｄ查询动作的参数为：{}", actiMo);
+        List<PfmActiMo> actiList = pfmActiSvc.list(actiMo);
+        _log.info("删除功能根据功能ｉｄ查询动作的返回值为：｛｝", String.valueOf(actiList));
+        if (actiList.size() != 0) {
+            for (int i = 0; i < actiList.size(); i++) {
+                PfmActiRo actiRo = pfmActiSvc.delEx(actiList.get(i).getId());
+                if (actiRo.getResult() != 1) {
+                    _log.error("删除功能删除动作时，出现错误，功能ｉｄ为：｛｝", id);
+                    throw new RuntimeException("删除动作失败");
+                }
+            }
+        }
+        _log.info("删除功能的参数为：{}", id);
+        int delResult = del(id);
+        _log.info("删除功能的返回值为：｛｝", delResult);
+        if (delResult != 1) {
+            _log.error("删除功能失败，功能ｉｄ为：｛｝", id);
+            throw new RuntimeException("删除功能失败");
+        }
+        _log.info("删除功能成功，功能ｉｄ为｛｝", id);
+        funcRo.setResult((byte) 1);
+        funcRo.setMsg("删除成功");
+        return funcRo;
+    }
 
-	/**
-	 * 设置是否启用功能
-	 * 
-	 * @param mo
-	 * @return
-	 */
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public PfmFuncRo enable(PfmFuncMo mo) {
-		_log.info("设置功能是否启用的参数为：{}", mo);
-		PfmActiMo pfmActiMo = new PfmActiMo();
-		pfmActiMo.setFuncId(mo.getId());
-		_log.info("根据功能ｉｄ查询动作信息的参数为：{}", pfmActiMo);
-		List<PfmActiMo> actiList = pfmActiSvc.list(pfmActiMo);
-		_log.info("根据功能ｉｄ查询动作信息的返回值为：{}", String.valueOf(actiList));
-		if (actiList.size() != 0) {
-			for (int i = 0; i < actiList.size(); i++) {
-				pfmActiMo = new PfmActiMo();
-				pfmActiMo.setId(actiList.get(i).getId());
-				pfmActiMo.setIsEnabled(mo.getIsEnabled());
-				_log.info("设置功能是否启用设置动作是否启用的参数为：{}", pfmActiMo);
-				PfmActiRo enableResult = pfmActiSvc.enable(pfmActiMo);
-				_log.info("设置功能是否启用设置动作是否启用的返回值为：{}", enableResult);
-				if (enableResult.getResult() != 1) {
-					_log.error("设置功能是否启用设置动作是否启用时出现错误，功能ｉｄ为:{}", mo.getId());
-					throw new RuntimeException("设置失败");
-				}
-			}
-		}
-		_log.info("设置功能是否启用的参数为：{}", mo);
-		int functionEnabledResult = _mapper.functionEnabled(mo.getId(), mo.getIsEnabled());
-		if (functionEnabledResult != 1) {
-			_log.error("设置功能是否启用失败，功能ｉｄ为：{}", mo.getId());
-			throw new RuntimeException("设置失败");
-		}
-		_log.info("设置是否启用功能成功，功能ｉｄ为:{}", mo.getId());
-		PfmFuncRo ro = new PfmFuncRo();
-		ro.setResult((byte) 1);
-		ro.setMsg("设置成功");
-		return ro;
-	}
+    /**
+     *  设置是否启用功能
+     *
+     *  @param mo
+     *  @return
+     */
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public PfmFuncRo enable(PfmFuncMo mo) {
+        _log.info("设置功能是否启用的参数为：{}", mo);
+        PfmActiMo pfmActiMo = new PfmActiMo();
+        pfmActiMo.setFuncId(mo.getId());
+        _log.info("根据功能ｉｄ查询动作信息的参数为：{}", pfmActiMo);
+        List<PfmActiMo> actiList = pfmActiSvc.list(pfmActiMo);
+        _log.info("根据功能ｉｄ查询动作信息的返回值为：{}", String.valueOf(actiList));
+        if (actiList.size() != 0) {
+            for (int i = 0; i < actiList.size(); i++) {
+                pfmActiMo = new PfmActiMo();
+                pfmActiMo.setId(actiList.get(i).getId());
+                pfmActiMo.setIsEnabled(mo.getIsEnabled());
+                _log.info("设置功能是否启用设置动作是否启用的参数为：{}", pfmActiMo);
+                PfmActiRo enableResult = pfmActiSvc.enable(pfmActiMo);
+                _log.info("设置功能是否启用设置动作是否启用的返回值为：{}", enableResult);
+                if (enableResult.getResult() != 1) {
+                    _log.error("设置功能是否启用设置动作是否启用时出现错误，功能ｉｄ为:{}", mo.getId());
+                    throw new RuntimeException("设置失败");
+                }
+            }
+        }
+        _log.info("设置功能是否启用的参数为：{}", mo);
+        int functionEnabledResult = _mapper.functionEnabled(mo.getId(), mo.getIsEnabled());
+        if (functionEnabledResult != 1) {
+            _log.error("设置功能是否启用失败，功能ｉｄ为：{}", mo.getId());
+            throw new RuntimeException("设置失败");
+        }
+        _log.info("设置是否启用功能成功，功能ｉｄ为:{}", mo.getId());
+        PfmFuncRo ro = new PfmFuncRo();
+        ro.setResult((byte) 1);
+        ro.setMsg("设置成功");
+        return ro;
+    }
 }
