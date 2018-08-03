@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/7/28 13:00:07                           */
+/* Created on:     2018/8/3 8:56:06                             */
 /*==============================================================*/
 
 
@@ -155,6 +155,7 @@ alter table PFM_SYS comment '系统信息';
 create table PFM_USER_ROLE
 (
    ID                   bigint not null comment '用户角色ID',
+   SYS_ID               varchar(20) not null comment '系统ID',
    USER_ID              bigint not null comment '用户ID',
    ROLE_ID              bigint not null comment '角色ID',
    primary key (ID),
