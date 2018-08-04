@@ -15,6 +15,37 @@ import java.io.Serializable;
 public class PfmUserRoleMo implements Serializable {
 
     /**
+     *    系统ID
+     *
+     *    数据库字段: PFM_USER_ROLE.SYS_ID
+     *
+     *    自动生成，如需修改，请删除本行 @mbg.generated
+     */
+    private String sysId;
+
+    /**
+     *    系统ID
+     *
+     *    数据库字段: PFM_USER_ROLE.SYS_ID
+     *
+     *    自动生成，如需修改，请删除本行 @mbg.generated
+     */
+    public String getSysId() {
+        return sysId;
+    }
+
+    /**
+     *    系统ID
+     *
+     *    数据库字段: PFM_USER_ROLE.SYS_ID
+     *
+     *    自动生成，如需修改，请删除本行 @mbg.generated
+     */
+    public void setSysId(String sysId) {
+        this.sysId = sysId;
+    }
+
+    /**
      *    用户角色ID
      *
      *    数据库字段: PFM_USER_ROLE.ID
