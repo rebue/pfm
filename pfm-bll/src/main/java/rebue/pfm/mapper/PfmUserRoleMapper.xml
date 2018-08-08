@@ -36,6 +36,13 @@
     delete from PFM_USER_ROLE
     where ID = #{id,jdbcType=BIGINT}
   </delete>
+  <delete id="deleteByUserAndRoleAndSys" parameterType="rebue.pfm.mo.PfmUserRoleMo">
+    <!--
+      根据用户id，角色id，系统id删除用户角色
+    -->
+    delete from PFM_USER_ROLE
+    where ROLE_ID = #{roleId,jdbcType=BIGINT} and USER_ID = #{userId,jdbcType=BIGINT} and SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="rebue.pfm.mo.PfmUserRoleMo">
     <!--
       WARNING - @mbg.generated

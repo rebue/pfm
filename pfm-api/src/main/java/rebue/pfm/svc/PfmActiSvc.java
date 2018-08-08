@@ -21,4 +21,11 @@ public interface PfmActiSvc extends MybatisBaseSvc<PfmActiMo, java.lang.Long> {
      *  @return
      */
     PfmActiRo enable(PfmActiMo mo);
+
+    /**
+     * 设置是否鉴权
+     * @param mo
+     * @return
+     */
+	PfmActiRo auth(PfmActiMo mo);
 }

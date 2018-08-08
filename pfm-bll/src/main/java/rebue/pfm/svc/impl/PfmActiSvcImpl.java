@@ -39,11 +39,11 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
 		if (mo.getId() == null || mo.getId() == 0) {
 			mo.setId(_idWorker.getId());
 		}
-		
+
 		if (mo.getOrderNo() == null || mo.getOrderNo() == 0) {
 			mo.setOrderNo((byte) 1);
 		}
-		
+
 		return super.add(mo);
 	}
 
@@ -105,6 +105,30 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
 			ro.setMsg("设置失败");
 			return ro;
 		}
+		ro.setResult((byte) 1);
+		ro.setMsg("设置成功");
+		return ro;
+	}
+
+	/**
+	 * 设置是否鉴权
+	 * @param mo
+	 * @return
+	 */
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public PfmActiRo auth(PfmActiMo mo) {
+		PfmActiRo ro = new PfmActiRo();
+		_log.info("设置是否鉴权的参数为：{}", mo);
+		int whetherTheAuthenticationResult = _mapper.whetherTheAuthentication(mo.getId(), mo.getIsAuth());
+		_log.info("设置是否鉴权的返回值为：{}", whetherTheAuthenticationResult);
+		if (whetherTheAuthenticationResult != 1) {
+			_log.error("设置是否鉴权出错，动作ｉｄ为:{}", mo.getId());
+			ro.setResult((byte) -1);
+			ro.setMsg("设置失败");
+			return ro;
+		}
+		_log.info("设置是否鉴权成功，动作ｉｄ为：{}", mo.getId());
 		ro.setResult((byte) 1);
 		ro.setMsg("设置成功");
 		return ro;

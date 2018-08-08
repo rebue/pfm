@@ -7,7 +7,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,43 +41,14 @@ public class PfmUserRoleCtrl {
 	private PfmRoleSvc pfmRoleSvc;
 
 	/**
-	 * 有唯一约束的字段名称
-	 *
-	 * @mbg.generated
-	 */
-	private String _uniqueFilesName = "某字段内容";
-
-	/**
 	 * 添加用户角色
 	 *
-	 * @mbg.generated
+	 * @mbg.overrideByMethodName
 	 */
 	@PostMapping("/pfm/userrole")
 	PfmUserRoleRo add(@RequestBody PfmUserRoleMo mo) throws Exception {
 		_log.info("add PfmUserRoleMo:" + mo);
-		PfmUserRoleRo ro = new PfmUserRoleRo();
-		try {
-			int result = svc.add(mo);
-			if (result == 1) {
-				String msg = "添加成功";
-				_log.info("{}: mo-{}", msg, mo);
-				ro.setMsg(msg);
-				ro.setResult((byte) 1);
-				return ro;
-			} else {
-				String msg = "添加失败";
-				_log.error("{}: mo-{}", msg, mo);
-				ro.setMsg(msg);
-				ro.setResult((byte) -1);
-				return ro;
-			}
-		} catch (DuplicateKeyException e) {
-			String msg = "添加失败，" + _uniqueFilesName + "已存在，不允许出现重复";
-			_log.error("{}: mo-{}", msg, mo);
-			ro.setMsg(msg);
-			ro.setResult((byte) -1);
-			return ro;
-		}
+		return svc.addEx(mo);
 	}
 
 	/**
@@ -103,26 +73,12 @@ public class PfmUserRoleCtrl {
 	/**
 	 * 删除用户角色
 	 *
-	 * @mbg.generated
+	 * @mbg.overrideByMethodName
 	 */
 	@DeleteMapping("/pfm/userrole")
-	PfmUserRoleRo del(@RequestParam("id") java.lang.Long id) {
-		_log.info("save PfmUserRoleMo:" + id);
-		int result = svc.del(id);
-		PfmUserRoleRo ro = new PfmUserRoleRo();
-		if (result == 1) {
-			String msg = "删除成功";
-			_log.info("{}: id-{}", msg, id);
-			ro.setMsg(msg);
-			ro.setResult((byte) 1);
-			return ro;
-		} else {
-			String msg = "删除失败，找不到该记录";
-			_log.error("{}: id-{}", msg, id);
-			ro.setMsg(msg);
-			ro.setResult((byte) -1);
-			return ro;
-		}
+	PfmUserRoleRo del(@RequestBody PfmUserRoleMo mo) {
+		_log.info("save PfmUserRoleMo:" + mo);
+		return svc.delEx(mo);
 	}
 
 	/**
@@ -187,10 +143,24 @@ public class PfmUserRoleCtrl {
 		ro.setUserRoleList(userRoleList);
 		PfmRoleMo roleMo = new PfmRoleMo();
 		roleMo.setSysId(mo.getSysId());
+		roleMo.setIsEnabled(true);
 		_log.info("查询角色信息的参数为：{}", roleMo);
 		List<PfmRoleMo> roleList = pfmRoleSvc.list(roleMo);
 		_log.info("查询角色信息的返回值为：{}", String.valueOf(roleList));
 		ro.setRoleList(roleList);
 		return ro;
+	}
+
+	/**
+	 * 查询用户id
+	 * 
+	 * @param sysId
+	 * @param roleId
+	 * @return
+	 */
+	@GetMapping("/pfm/userrole/getuserid")
+	List<Long> getUseIdByRoleIdAndSysId(@RequestParam("sysId") String sysId, @RequestParam("roleId") Long roleId) {
+		_log.info("查询用户id的参数为：{}, {}", sysId, roleId);
+		return svc.getUseIByRoleIdAndSysId(sysId, roleId);
 	}
 }

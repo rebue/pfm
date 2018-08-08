@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import rebue.pfm.mapper.PfmRoleActiMapper;
 import rebue.pfm.mapper.PfmRoleMapper;
+import rebue.pfm.mapper.PfmUserRoleMapper;
 import rebue.pfm.mo.PfmRoleMo;
 import rebue.pfm.ro.PfmRoleRo;
 import rebue.pfm.svc.PfmRoleSvc;
@@ -28,6 +29,9 @@ import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long, PfmRoleMapper> implements PfmRoleSvc {
 
+	@Resource
+	private PfmUserRoleMapper pfmUserRoleMapper;
+	
 	/**
 	 * @mbg.generated
 	 */
@@ -83,14 +87,15 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
 	public PfmRoleRo delEx(long id) {
 		PfmRoleRo pfmRoleRo = new PfmRoleRo();
 		_log.info("删除角色的参数为：{}", id);
+		// 根据角色id删除动作
 		pfmRoleActiMapper.deleteByRoleId(id);
+		// 根据角色id删除用户角色
+		pfmUserRoleMapper.deleteByRoleId(id);
 		int deleteByPrimaryKeyResult = _mapper.deleteByPrimaryKey(id);
 		_log.info("删除角色的返回值为：{}", deleteByPrimaryKeyResult);
 		if (deleteByPrimaryKeyResult != 1) {
 			_log.error("删除角色出错，角色ｉｄ为：{}", id);
-			pfmRoleRo.setResult((byte) -1);
-			pfmRoleRo.setMsg("删除失败");
-			return pfmRoleRo;
+			throw new RuntimeException("删除失败");
 		}
 		_log.error("删除角色成功，角色ｉｄ为：{}", id);
 		pfmRoleRo.setResult((byte) 1);
