@@ -2,17 +2,26 @@ package rebue.pfm.svc.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.github.pagehelper.PageInfo;
+
 import rebue.pfm.mapper.PfmUserRoleMapper;
 import rebue.pfm.mo.PfmUserRoleMo;
 import rebue.pfm.ro.PfmUserRoleRo;
 import rebue.pfm.svc.PfmUserRoleSvc;
 import rebue.pfm.to.PfmModifyUserRoleTo;
 import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
+import rebue.suc.mo.SucUserMo;
+import rebue.suc.svr.feign.SucUserSvc;
+import rebue.wheel.StrUtils;
 
 @Service
 /**
@@ -31,6 +40,9 @@ public class PfmUserRoleSvcImpl extends MybatisBaseSvcImpl<PfmUserRoleMo, java.l
 		implements PfmUserRoleSvc {
 
 	private static final Logger _log = LoggerFactory.getLogger(PfmUserRoleSvcImpl.class);
+
+	@Resource
+	private SucUserSvc sucUserSvc;
 
 	/**
 	 * @mbg.generated
@@ -88,16 +100,25 @@ public class PfmUserRoleSvcImpl extends MybatisBaseSvcImpl<PfmUserRoleMo, java.l
 	}
 
 	/**
-	 * 根据系统id和角色id查询用户id
-	 * 
+	 * 根据系统id和角色id查询用户分页信息
 	 * @param sysId
 	 * @param roleId
+	 * @param pageNum
+	 * @param pageSize
 	 * @return
 	 */
 	@Override
-	public List<Long> getUseIByRoleIdAndSysId(String sysId, Long roleId) {
-		_log.info("查询用户id的参数为：{},{}", sysId, roleId);
-		return _mapper.selectUseIByRoleIdAndSysId(sysId, roleId);
+	public PageInfo<SucUserMo> listUserBySysIdAndRoleId(String sysId, Long roleId, int pageNum, int pageSize) {
+		_log.info("根据系统id和角色id查询用户id的参数为：sysId={}, roleId={}", sysId, roleId);
+		List<Long> idList = _mapper.selectUseIByRoleIdAndSysId(sysId, roleId);
+		_log.info("根据系统id和角色id查询用户id的返回值为：{}", String.valueOf(idList));
+		StringBuilder userIds = new StringBuilder();
+		for (Long id : idList) {
+			userIds.append(id + ",");
+		}
+		String ids = StringUtils.isBlank(userIds.toString()) ? "-1" : StrUtils.delRight(userIds.toString(), 1);
+		_log.info("根据用户id查询用户信息的参数为：{}", ids);
+		return sucUserSvc.listUserByIds(pageNum, pageSize, ids);
 	}
 
 	/**
@@ -144,6 +165,7 @@ public class PfmUserRoleSvcImpl extends MybatisBaseSvcImpl<PfmUserRoleMo, java.l
 
 	/**
 	 * 删除用户角色
+	 * 
 	 * @param mo
 	 * @return
 	 */

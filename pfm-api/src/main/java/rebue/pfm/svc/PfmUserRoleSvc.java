@@ -1,11 +1,12 @@
 package rebue.pfm.svc;
 
-import java.util.List;
+import com.github.pagehelper.PageInfo;
 
 import rebue.pfm.mo.PfmUserRoleMo;
 import rebue.pfm.ro.PfmUserRoleRo;
 import rebue.pfm.to.PfmModifyUserRoleTo;
 import rebue.robotech.svc.MybatisBaseSvc;
+import rebue.suc.mo.SucUserMo;
 
 public interface PfmUserRoleSvc extends MybatisBaseSvc<PfmUserRoleMo, java.lang.Long> {
 
@@ -16,14 +17,6 @@ public interface PfmUserRoleSvc extends MybatisBaseSvc<PfmUserRoleMo, java.lang.
 	 * @return
 	 */
 	PfmUserRoleRo modifyEx(PfmModifyUserRoleTo to);
-
-	/**
-	 * 根据系统id和角色id查询用户id
-	 * @param sysId
-	 * @param roleId
-	 * @return
-	 */
-	List<Long> getUseIByRoleIdAndSysId(String sysId, Long roleId);
 
 	/**
 	 * 添加用户角色
@@ -38,4 +31,14 @@ public interface PfmUserRoleSvc extends MybatisBaseSvc<PfmUserRoleMo, java.lang.
 	 * @return
 	 */
 	PfmUserRoleRo delEx(PfmUserRoleMo mo);
+
+	/**
+	 * 根据系统id和角色id查询用户分页信息
+	 * @param sysId
+	 * @param roleId
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	PageInfo<SucUserMo> listUserBySysIdAndRoleId(String sysId, Long roleId, int pageNum, int pageSize);
 }

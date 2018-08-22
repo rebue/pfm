@@ -22,6 +22,7 @@ import rebue.pfm.ro.PfmUserRoleRo;
 import rebue.pfm.svc.PfmRoleSvc;
 import rebue.pfm.svc.PfmUserRoleSvc;
 import rebue.pfm.to.PfmModifyUserRoleTo;
+import rebue.suc.mo.SucUserMo;
 
 @RestController
 public class PfmUserRoleCtrl {
@@ -151,16 +152,19 @@ public class PfmUserRoleCtrl {
 		return ro;
 	}
 
+	
 	/**
-	 * 查询用户id
-	 * 
+	 * 根据系统id和角色id查询用户分页信息
 	 * @param sysId
 	 * @param roleId
+	 * @param pageNum
+	 * @param pageSize
 	 * @return
 	 */
-	@GetMapping("/pfm/userrole/getuserid")
-	List<Long> getUseIdByRoleIdAndSysId(@RequestParam("sysId") String sysId, @RequestParam("roleId") Long roleId) {
-		_log.info("查询用户id的参数为：{}, {}", sysId, roleId);
-		return svc.getUseIByRoleIdAndSysId(sysId, roleId);
+	@GetMapping("/pfm/userrole/listuserbysysidandroleid")
+	PageInfo<SucUserMo> listUserBySysIdAndRoleId(String sysId, Long roleId, int pageNum, int pageSize) {
+		_log.info("根据系统id和角色id查询分页信息的参数为：sysId={}, roleId={}, pageNum={}, pageSize={}", sysId, roleId, pageNum, pageSize);
+		return svc.listUserBySysIdAndRoleId(sysId, roleId, pageNum, pageSize);
 	}
+
 }
