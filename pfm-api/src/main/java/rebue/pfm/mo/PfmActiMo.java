@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_ACTI
  *
- * 自动生成，如需修改，请删除本行 @mbg.generated
+ * @mbg.generated 自动生成，如需修改，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmActiMo implements Serializable {
@@ -19,7 +19,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long id;
 
@@ -28,7 +28,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String sysId;
 
@@ -37,7 +37,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.FUNC_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long funcId;
 
@@ -46,7 +46,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String name;
 
@@ -55,7 +55,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.IS_AUTH
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Boolean isAuth;
 
@@ -64,7 +64,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.IS_ENABLED
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Boolean isEnabled;
 
@@ -73,7 +73,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.ORDER_NO
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Byte orderNo;
 
@@ -82,12 +82,12 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String remark;
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
 
@@ -96,7 +96,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getId() {
         return id;
@@ -107,7 +107,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setId(Long id) {
         this.id = id;
@@ -118,7 +118,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getSysId() {
         return sysId;
@@ -129,7 +129,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setSysId(String sysId) {
         this.sysId = sysId;
@@ -140,7 +140,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.FUNC_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getFuncId() {
         return funcId;
@@ -151,7 +151,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.FUNC_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setFuncId(Long funcId) {
         this.funcId = funcId;
@@ -162,7 +162,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getName() {
         return name;
@@ -173,7 +173,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setName(String name) {
         this.name = name;
@@ -184,7 +184,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.IS_AUTH
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Boolean getIsAuth() {
         return isAuth;
@@ -195,7 +195,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.IS_AUTH
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setIsAuth(Boolean isAuth) {
         this.isAuth = isAuth;
@@ -206,7 +206,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.IS_ENABLED
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Boolean getIsEnabled() {
         return isEnabled;
@@ -217,7 +217,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.IS_ENABLED
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setIsEnabled(Boolean isEnabled) {
         this.isEnabled = isEnabled;
@@ -228,7 +228,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.ORDER_NO
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Byte getOrderNo() {
         return orderNo;
@@ -239,7 +239,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.ORDER_NO
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setOrderNo(Byte orderNo) {
         this.orderNo = orderNo;
@@ -250,7 +250,7 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getRemark() {
         return remark;
@@ -261,14 +261,14 @@ public class PfmActiMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setRemark(String remark) {
         this.remark = remark;
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public String toString() {
@@ -290,7 +290,7 @@ public class PfmActiMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public boolean equals(Object that) {
@@ -308,7 +308,7 @@ public class PfmActiMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public int hashCode() {

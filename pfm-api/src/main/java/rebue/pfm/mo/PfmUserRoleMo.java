@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_USER_ROLE
  *
- * 自动生成，如需修改，请删除本行 @mbg.generated
+ * @mbg.generated 自动生成，如需修改，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmUserRoleMo implements Serializable {
@@ -19,7 +19,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String sysId;
 
@@ -28,7 +28,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getSysId() {
         return sysId;
@@ -39,7 +39,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setSysId(String sysId) {
         this.sysId = sysId;
@@ -50,7 +50,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long id;
 
@@ -59,7 +59,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.USER_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long userId;
 
@@ -68,12 +68,12 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.ROLE_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long roleId;
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
 
@@ -82,7 +82,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getId() {
         return id;
@@ -93,7 +93,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setId(Long id) {
         this.id = id;
@@ -104,7 +104,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.USER_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getUserId() {
         return userId;
@@ -115,7 +115,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.USER_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setUserId(Long userId) {
         this.userId = userId;
@@ -126,7 +126,7 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.ROLE_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getRoleId() {
         return roleId;
@@ -137,14 +137,14 @@ public class PfmUserRoleMo implements Serializable {
      *
      *    数据库字段: PFM_USER_ROLE.ROLE_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public String toString() {
@@ -161,7 +161,7 @@ public class PfmUserRoleMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public boolean equals(Object that) {
@@ -179,7 +179,7 @@ public class PfmUserRoleMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public int hashCode() {

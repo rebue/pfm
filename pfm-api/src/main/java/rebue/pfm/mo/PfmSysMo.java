@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_SYS
  *
- * 自动生成，如需修改，请删除本行 @mbg.generated
+ * @mbg.generated 自动生成，如需修改，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmSysMo implements Serializable {
@@ -19,7 +19,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String id;
 
@@ -28,7 +28,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String name;
 
@@ -37,12 +37,12 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String remark;
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
 
@@ -51,7 +51,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getId() {
         return id;
@@ -62,7 +62,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setId(String id) {
         this.id = id;
@@ -73,7 +73,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getName() {
         return name;
@@ -84,7 +84,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setName(String name) {
         this.name = name;
@@ -95,7 +95,7 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getRemark() {
         return remark;
@@ -106,14 +106,14 @@ public class PfmSysMo implements Serializable {
      *
      *    数据库字段: PFM_SYS.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setRemark(String remark) {
         this.remark = remark;
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public String toString() {
@@ -130,7 +130,7 @@ public class PfmSysMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public boolean equals(Object that) {
@@ -148,7 +148,7 @@ public class PfmSysMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public int hashCode() {

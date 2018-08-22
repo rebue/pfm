@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_ROLE
  *
- * 自动生成，如需修改，请删除本行 @mbg.generated
+ * @mbg.generated 自动生成，如需修改，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmRoleMo implements Serializable {
@@ -19,7 +19,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long id;
 
@@ -28,7 +28,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String sysId;
 
@@ -37,7 +37,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String name;
 
@@ -46,7 +46,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.IS_ENABLED
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Boolean isEnabled;
 
@@ -55,7 +55,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.ORDER_NO
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Byte orderNo;
 
@@ -64,12 +64,12 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String remark;
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
 
@@ -78,7 +78,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getId() {
         return id;
@@ -89,7 +89,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setId(Long id) {
         this.id = id;
@@ -100,7 +100,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getSysId() {
         return sysId;
@@ -111,7 +111,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.SYS_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setSysId(String sysId) {
         this.sysId = sysId;
@@ -122,7 +122,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getName() {
         return name;
@@ -133,7 +133,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.NAME
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setName(String name) {
         this.name = name;
@@ -144,7 +144,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.IS_ENABLED
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Boolean getIsEnabled() {
         return isEnabled;
@@ -155,7 +155,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.IS_ENABLED
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setIsEnabled(Boolean isEnabled) {
         this.isEnabled = isEnabled;
@@ -166,7 +166,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.ORDER_NO
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Byte getOrderNo() {
         return orderNo;
@@ -177,7 +177,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.ORDER_NO
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setOrderNo(Byte orderNo) {
         this.orderNo = orderNo;
@@ -188,7 +188,7 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public String getRemark() {
         return remark;
@@ -199,14 +199,14 @@ public class PfmRoleMo implements Serializable {
      *
      *    数据库字段: PFM_ROLE.REMARK
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setRemark(String remark) {
         this.remark = remark;
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public String toString() {
@@ -226,7 +226,7 @@ public class PfmRoleMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public boolean equals(Object that) {
@@ -244,7 +244,7 @@ public class PfmRoleMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public int hashCode() {

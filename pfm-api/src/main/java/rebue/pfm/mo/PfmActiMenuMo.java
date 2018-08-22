@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_ACTI_MENU
  *
- * 自动生成，如需修改，请删除本行 @mbg.generated
+ * @mbg.generated 自动生成，如需修改，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmActiMenuMo implements Serializable {
@@ -19,7 +19,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long id;
 
@@ -28,7 +28,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.ACTI_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long actiId;
 
@@ -37,12 +37,12 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.MENU_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long menuId;
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
 
@@ -51,7 +51,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getId() {
         return id;
@@ -62,7 +62,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setId(Long id) {
         this.id = id;
@@ -73,7 +73,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.ACTI_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getActiId() {
         return actiId;
@@ -84,7 +84,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.ACTI_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setActiId(Long actiId) {
         this.actiId = actiId;
@@ -95,7 +95,7 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.MENU_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public Long getMenuId() {
         return menuId;
@@ -106,14 +106,14 @@ public class PfmActiMenuMo implements Serializable {
      *
      *    数据库字段: PFM_ACTI_MENU.MENU_ID
      *
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     public void setMenuId(Long menuId) {
         this.menuId = menuId;
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public String toString() {
@@ -130,7 +130,7 @@ public class PfmActiMenuMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public boolean equals(Object that) {
@@ -148,7 +148,7 @@ public class PfmActiMenuMo implements Serializable {
     }
 
     /**
-     *    自动生成，如需修改，请删除本行 @mbg.generated
+     *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
     public int hashCode() {

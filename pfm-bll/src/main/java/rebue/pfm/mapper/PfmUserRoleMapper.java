@@ -14,52 +14,52 @@ import rebue.robotech.mapper.MybatisBaseMapper;
 public interface PfmUserRoleMapper extends MybatisBaseMapper<PfmUserRoleMo, Long> {
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	int deleteByPrimaryKey(Long id);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	int insert(PfmUserRoleMo record);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	int insertSelective(PfmUserRoleMo record);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	PfmUserRoleMo selectByPrimaryKey(Long id);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	int updateByPrimaryKeySelective(PfmUserRoleMo record);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	int updateByPrimaryKey(PfmUserRoleMo record);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	List<PfmUserRoleMo> selectAll();
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	List<PfmUserRoleMo> selectSelective(PfmUserRoleMo record);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	boolean existByPrimaryKey(Long id);
 
 	/**
-	 * 自动生成，如需修改，请删除本行 @mbg.generated
+	 * @mbg.generated 自动生成，如需修改，请删除本行
 	 */
 	boolean existSelective(PfmUserRoleMo record);
 
