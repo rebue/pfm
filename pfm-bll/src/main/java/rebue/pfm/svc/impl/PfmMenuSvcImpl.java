@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import rebue.pfm.mapper.PfmMenuMapper;
 import rebue.pfm.mo.PfmMenuMo;
 import rebue.pfm.ro.PfmMenuRo;
@@ -42,11 +43,11 @@ public class PfmMenuSvcImpl extends MybatisBaseSvcImpl<PfmMenuMo, java.lang.Long
     private static final Logger _log = LoggerFactory.getLogger(PfmMenuSvcImpl.class);
 
     /**
-     *  是否启用菜单
+     * 是否启用菜单
      *
-     *  @param id
-     *  @param isEnabled
-     *  @return
+     * @param id
+     * @param isEnabled
+     * @return
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -55,10 +56,10 @@ public class PfmMenuSvcImpl extends MybatisBaseSvcImpl<PfmMenuMo, java.lang.Long
         PfmMenuRo ro = new PfmMenuRo();
         _log.info("是否启用菜单根据ｉｄ查询菜单信息的参数为：{}", id);
         PfmMenuMo mo = _mapper.selectByPrimaryKey(id);
-        _log.info("是否启用菜单根据ｉｄ查询菜单信息的返回值为：{}", mo);
-        int whetherToEnableMenuResult = _mapper.whetherToEnableMenu(mo.getCode(), isEnabled);
-        _log.info("是否启用菜单的返回值为：｛｝", whetherToEnableMenuResult);
-        if (whetherToEnableMenuResult < 1) {
+        _log.info("启用或禁用菜单根据ｉｄ查询菜单信息的返回值为：{}", mo);
+        int enableMenuResult = _mapper.enableMenu(mo.getCode(), isEnabled);
+        _log.info("启用或禁用菜单的返回值为：｛｝", enableMenuResult);
+        if (enableMenuResult < 1) {
             _log.info("是否启用菜单失败，菜单ｉｄ为：｛｝", id);
             ro.setResult((byte) -1);
             ro.setMsg("修改失败");
@@ -71,10 +72,10 @@ public class PfmMenuSvcImpl extends MybatisBaseSvcImpl<PfmMenuMo, java.lang.Long
     }
 
     /**
-     *  删除菜单 1．根据菜单ｉｄ查询菜单编码 ２．根据菜单编码查询ｉｄ ３．根据菜单ｉｄ删除菜单
+     * 删除菜单 1．根据菜单ｉｄ查询菜单编码 ２．根据菜单编码查询ｉｄ ３．根据菜单ｉｄ删除菜单
      *
-     *  @param code
-     *  @return
+     * @param code
+     * @return
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)

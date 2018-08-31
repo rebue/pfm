@@ -1,7 +1,9 @@
 package rebue.pfm.ctrl;
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import rebue.pfm.mo.PfmSysMo;
 import rebue.pfm.ro.PfmSysRo;
 import rebue.pfm.svc.PfmSysSvc;
@@ -28,7 +31,7 @@ public class PfmSysCtrl {
      * @mbg.generated
      */
     @Resource
-    private PfmSysSvc svc;
+    private PfmSysSvc           svc;
 
     /**
      * 添加系统信息
@@ -160,7 +163,7 @@ public class PfmSysCtrl {
      */
     @GetMapping("/pfm/sys")
     List<PfmSysMo> list() {
-        _log.info("list查询大卖系统");
+        _log.info("listPfmSys");
         List<PfmSysMo> result = svc.listAll();
         _log.info("result: " + result);
         return result;

@@ -4,11 +4,15 @@
 /*==============================================================*/
 
 
-drop table if exists PFM_ACTI;
-
 drop table if exists PFM_ACTI_MENU;
 
 drop table if exists PFM_ACTI_URN;
+
+drop table if exists PFM_ROLE_ACTI;
+
+drop table if exists PFM_USER_ROLE;
+
+drop table if exists PFM_ACTI;
 
 drop table if exists PFM_FUNC;
 
@@ -16,11 +20,8 @@ drop table if exists PFM_MENU;
 
 drop table if exists PFM_ROLE;
 
-drop table if exists PFM_ROLE_ACTI;
-
 drop table if exists PFM_SYS;
 
-drop table if exists PFM_USER_ROLE;
 
 /*==============================================================*/
 /* Table: PFM_ACTI                                              */
