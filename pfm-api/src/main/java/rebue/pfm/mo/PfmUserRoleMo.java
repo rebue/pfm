@@ -9,41 +9,10 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_USER_ROLE
  *
- * @mbg.generated 自动生成，如需修改，请删除本行
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmUserRoleMo implements Serializable {
-
-    /**
-     *    系统ID
-     *
-     *    数据库字段: PFM_USER_ROLE.SYS_ID
-     *
-     *    @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    private String sysId;
-
-    /**
-     *    系统ID
-     *
-     *    数据库字段: PFM_USER_ROLE.SYS_ID
-     *
-     *    @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    public String getSysId() {
-        return sysId;
-    }
-
-    /**
-     *    系统ID
-     *
-     *    数据库字段: PFM_USER_ROLE.SYS_ID
-     *
-     *    @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    public void setSysId(String sysId) {
-        this.sysId = sysId;
-    }
 
     /**
      *    用户角色ID
@@ -53,6 +22,15 @@ public class PfmUserRoleMo implements Serializable {
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private Long id;
+
+    /**
+     *    系统ID
+     *
+     *    数据库字段: PFM_USER_ROLE.SYS_ID
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    private String sysId;
 
     /**
      *    用户ID
@@ -97,6 +75,28 @@ public class PfmUserRoleMo implements Serializable {
      */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+     *    系统ID
+     *
+     *    数据库字段: PFM_USER_ROLE.SYS_ID
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public String getSysId() {
+        return sysId;
+    }
+
+    /**
+     *    系统ID
+     *
+     *    数据库字段: PFM_USER_ROLE.SYS_ID
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public void setSysId(String sysId) {
+        this.sysId = sysId;
     }
 
     /**
@@ -153,6 +153,7 @@ public class PfmUserRoleMo implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", sysId=").append(sysId);
         sb.append(", userId=").append(userId);
         sb.append(", roleId=").append(roleId);
         sb.append(", serialVersionUID=").append(serialVersionUID);

@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_ACTI
  *
- * @mbg.generated 自动生成，如需修改，请删除本行
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmActiMo implements Serializable {

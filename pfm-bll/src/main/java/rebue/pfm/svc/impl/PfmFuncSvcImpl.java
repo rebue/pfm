@@ -10,30 +10,30 @@ import org.springframework.transaction.annotation.Transactional;
 import rebue.pfm.mapper.PfmFuncMapper;
 import rebue.pfm.mo.PfmActiMo;
 import rebue.pfm.mo.PfmFuncMo;
-import rebue.pfm.ro.PfmActiRo;
-import rebue.pfm.ro.PfmFuncRo;
 import rebue.pfm.svc.PfmActiSvc;
 import rebue.pfm.svc.PfmFuncSvc;
+import rebue.robotech.dic.ResultDic;
+import rebue.robotech.ro.Ro;
 import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
 
-@Service
 /**
- * <pre>
- * 在单独使用不带任何参数 的 @Transactional 注释时，
+ * 功能信息
+ *
+ * 在单独使用不带任何参数的 @Transactional 注释时，
  * propagation(传播模式)=REQUIRED，readOnly=false，
  * isolation(事务隔离级别)=READ_COMMITTED，
  * 而且事务不会针对受控异常（checked exception）回滚。
+ *
  * 注意：
  * 一般是查询的数据库操作，默认设置readOnly=true, propagation=Propagation.SUPPORTS
  * 而涉及到增删改的数据库操作的方法，要设置 readOnly=false, propagation=Propagation.REQUIRED
- * </pre>
+ *
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
  */
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+@Service
 public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long, PfmFuncMapper> implements PfmFuncSvc {
 
-    /**
-     *  @mbg.overrideByMethodName
-     */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public int add(PfmFuncMo mo) {
@@ -53,16 +53,12 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
     private PfmActiSvc pfmActiSvc;
 
     /**
-     *  删除功能
-     *
-     *  @param id
-     *  @return
+     * 删除功能
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public PfmFuncRo delEx(long id) {
+    public int del(Long id) {
         _log.info("删除功能的参数为：｛｝", id);
-        PfmFuncRo funcRo = new PfmFuncRo();
         // 根据功能ｉｄ查询所有动作
         PfmActiMo actiMo = new PfmActiMo();
         actiMo.setFuncId(id);
@@ -71,35 +67,25 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
         _log.info("删除功能根据功能ｉｄ查询动作的返回值为：｛｝", String.valueOf(actiList));
         if (actiList.size() != 0) {
             for (int i = 0; i < actiList.size(); i++) {
-                PfmActiRo actiRo = pfmActiSvc.delEx(actiList.get(i).getId());
-                if (actiRo.getResult() != 1) {
+                if (pfmActiSvc.del(actiList.get(i).getId()) != 1L) {
                     _log.error("删除功能删除动作时，出现错误，功能ｉｄ为：｛｝", id);
                     throw new RuntimeException("删除动作失败");
                 }
             }
         }
         _log.info("删除功能的参数为：{}", id);
-        int delResult = del(id);
-        _log.info("删除功能的返回值为：｛｝", delResult);
-        if (delResult != 1) {
-            _log.error("删除功能失败，功能ｉｄ为：｛｝", id);
-            throw new RuntimeException("删除功能失败");
-        }
-        _log.info("删除功能成功，功能ｉｄ为｛｝", id);
-        funcRo.setResult((byte) 1);
-        funcRo.setMsg("删除成功");
-        return funcRo;
+        return del(id);
     }
 
     /**
-     *  设置是否启用功能
+     * 设置是否启用功能
      *
-     *  @param mo
-     *  @return
+     * @param mo
+     * @return
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public PfmFuncRo enable(PfmFuncMo mo) {
+    public Ro enable(PfmFuncMo mo) {
         _log.info("设置功能是否启用的参数为：{}", mo);
         PfmActiMo pfmActiMo = new PfmActiMo();
         pfmActiMo.setFuncId(mo.getId());
@@ -112,9 +98,9 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
                 pfmActiMo.setId(actiList.get(i).getId());
                 pfmActiMo.setIsEnabled(mo.getIsEnabled());
                 _log.info("设置功能是否启用设置动作是否启用的参数为：{}", pfmActiMo);
-                PfmActiRo enableResult = pfmActiSvc.enable(pfmActiMo);
+                Ro enableResult = pfmActiSvc.enable(pfmActiMo);
                 _log.info("设置功能是否启用设置动作是否启用的返回值为：{}", enableResult);
-                if (enableResult.getResult() != 1) {
+                if (enableResult.getResult() != ResultDic.SUCCESS) {
                     _log.error("设置功能是否启用设置动作是否启用时出现错误，功能ｉｄ为:{}", mo.getId());
                     throw new RuntimeException("设置失败");
                 }
@@ -127,8 +113,8 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
             throw new RuntimeException("设置失败");
         }
         _log.info("设置是否启用功能成功，功能ｉｄ为:{}", mo.getId());
-        PfmFuncRo ro = new PfmFuncRo();
-        ro.setResult((byte) 1);
+        Ro ro = new Ro();
+        ro.setResult(ResultDic.SUCCESS);
         ro.setMsg("设置成功");
         return ro;
     }

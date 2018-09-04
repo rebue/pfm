@@ -23,14 +23,8 @@ import rebue.wheel.turing.JwtUtils;
 @RestController
 public class PfmUserLoginCtrl {
 
-    /**
-     * @mbg.generated
-     */
     private static final Logger _log = LoggerFactory.getLogger(PfmUserLoginCtrl.class);
 
-    /**
-     * @mbg.generated
-     */
     @Resource
     private PfmUserLoginSvc     svc;
 

@@ -1,22 +1,21 @@
 package rebue.pfm.svc;
 
 import rebue.pfm.mo.PfmFuncMo;
-import rebue.pfm.ro.PfmFuncRo;
+import rebue.robotech.ro.Ro;
 import rebue.robotech.svc.MybatisBaseSvc;
 
+/**
+ * 功能信息
+ *
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
+ */
 public interface PfmFuncSvc extends MybatisBaseSvc<PfmFuncMo, java.lang.Long> {
 
     /**
-     *  删除功能
-     *  @param id
-     *  @return
+     * 设置是否启用功能
+     *
+     * @param mo
+     * @return
      */
-    PfmFuncRo delEx(long id);
-
-    /**
-     *  设置是否启用功能
-     *  @param mo
-     *  @return
-     */
-    PfmFuncRo enable(PfmFuncMo mo);
+    Ro enable(PfmFuncMo mo);
 }

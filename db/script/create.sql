@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/8/3 8:56:06                             */
+/* Created on:     2018/9/2 13:34:37                            */
 /*==============================================================*/
 
 
@@ -10,18 +10,17 @@ drop table if exists PFM_ACTI_URN;
 
 drop table if exists PFM_ROLE_ACTI;
 
-drop table if exists PFM_USER_ROLE;
-
 drop table if exists PFM_ACTI;
 
 drop table if exists PFM_FUNC;
 
 drop table if exists PFM_MENU;
 
+drop table if exists PFM_USER_ROLE;
+
 drop table if exists PFM_ROLE;
 
 drop table if exists PFM_SYS;
-
 
 /*==============================================================*/
 /* Table: PFM_ACTI                                              */
@@ -96,6 +95,7 @@ create table PFM_MENU
    SYS_ID               varchar(20) not null comment '系统ID',
    CODE                 varchar(20) not null comment '菜单编码',
    NAME                 varchar(20) not null comment '菜单名称',
+   TITLE                varchar(30) comment '标题(点击菜单后显示在内容页面的标题)',
    PATH                 varchar(20) not null comment '路径',
    IS_ENABLED           bool not null default false comment '是否启用',
    ICON                 varchar(20) comment '菜单图标',

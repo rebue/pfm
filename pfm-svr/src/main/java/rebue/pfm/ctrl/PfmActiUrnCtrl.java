@@ -1,5 +1,7 @@
 package rebue.pfm.ctrl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -13,20 +15,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rebue.pfm.mo.PfmActiUrnMo;
-import rebue.pfm.ro.PfmActiUrnRo;
 import rebue.pfm.svc.PfmActiUrnSvc;
 import rebue.pfm.to.PfmModifyActiUrnTo;
+import rebue.robotech.dic.ResultDic;
+import rebue.robotech.ro.Ro;
 
+/**
+ * 动作URN
+ *
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
+ */
 @RestController
 public class PfmActiUrnCtrl {
 
     /**
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final Logger _log = LoggerFactory.getLogger(PfmActiUrnCtrl.class);
 
     /**
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Resource
     private PfmActiUrnSvc svc;
@@ -34,39 +42,46 @@ public class PfmActiUrnCtrl {
     /**
      * 有唯一约束的字段名称
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String _uniqueFilesName = "某字段内容";
 
     /**
      * 添加动作URN
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @PostMapping("/pfm/actiurn")
-    PfmActiUrnRo add(@RequestBody PfmActiUrnMo mo) throws Exception {
+    Ro add(@RequestBody PfmActiUrnMo mo) throws Exception {
         _log.info("add PfmActiUrnMo:" + mo);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+        Ro ro = new Ro();
         try {
             int result = svc.add(mo);
             if (result == 1) {
                 String msg = "添加成功";
                 _log.info("{}: mo-{}", msg, mo);
                 ro.setMsg(msg);
-                ro.setResult((byte) 1);
+                ro.setResult(ResultDic.SUCCESS);
                 return ro;
             } else {
                 String msg = "添加失败";
                 _log.error("{}: mo-{}", msg, mo);
                 ro.setMsg(msg);
-                ro.setResult((byte) -1);
+                ro.setResult(ResultDic.FAIL);
                 return ro;
             }
         } catch (DuplicateKeyException e) {
             String msg = "添加失败，" + _uniqueFilesName + "已存在，不允许出现重复";
             _log.error("{}: mo-{}", msg, mo);
             ro.setMsg(msg);
-            ro.setResult((byte) -1);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        } catch (RuntimeException e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String msg = "修改失败，出现运行时异常(" + sdf.format(new Date()) + ")";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
             return ro;
         }
     }
@@ -74,24 +89,24 @@ public class PfmActiUrnCtrl {
     /**
      * 删除动作URN
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @DeleteMapping("/pfm/actiurn")
-    PfmActiUrnRo del(@RequestParam("id") java.lang.Long id) {
+    Ro del(@RequestParam("id") java.lang.Long id) {
         _log.info("save PfmActiUrnMo:" + id);
         int result = svc.del(id);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+        Ro ro = new Ro();
         if (result == 1) {
             String msg = "删除成功";
             _log.info("{}: id-{}", msg, id);
             ro.setMsg(msg);
-            ro.setResult((byte) 1);
+            ro.setResult(ResultDic.SUCCESS);
             return ro;
         } else {
             String msg = "删除失败，找不到该记录";
             _log.error("{}: id-{}", msg, id);
             ro.setMsg(msg);
-            ro.setResult((byte) -1);
+            ro.setResult(ResultDic.FAIL);
             return ro;
         }
     }
@@ -99,45 +114,30 @@ public class PfmActiUrnCtrl {
     /**
      * 获取单个动作URN
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @GetMapping("/pfm/actiurn/getbyid")
-    PfmActiUrnRo getById(@RequestParam("id") java.lang.Long id) {
+    PfmActiUrnMo getById(@RequestParam("id") java.lang.Long id) {
         _log.info("get PfmActiUrnMo by id: " + id);
-        PfmActiUrnMo result = svc.getById(id);
-        _log.info("get: " + result);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
-        if (result == null) {
-            String msg = "获取失败，没有找到该条记录";
-            _log.error("{}: id-{}", msg, id);
-            ro.setMsg(msg);
-            ro.setResult((byte) -1);
-            return ro;
-        } else {
-            String msg = "获取成功";
-            _log.info("{}: id-{}", msg, id);
-            ro.setMsg(msg);
-            ro.setResult((byte) 1);
-            ro.setRecord(result);
-            return ro;
-        }
+        return svc.getById(id);
     }
 
     /**
-     *  修改动作URN
-     *  @mbg.overrideByMethodName
+     * 修改动作URN
+     *
+     * @mbg.overrideByMethodName
      */
     @SuppressWarnings("finally")
     @PutMapping("/pfm/actiurn")
-    PfmActiUrnRo modify(@RequestBody PfmModifyActiUrnTo to) throws Exception {
+    Ro modify(@RequestBody PfmModifyActiUrnTo to) throws Exception {
         _log.info("modify PfmActiUrnMo:" + to);
-        PfmActiUrnRo ro = new PfmActiUrnRo();
+        Ro ro = new Ro();
         try {
-            ro = svc.modifyEx(to);
+            ro = svc.modify(to);
             _log.info("设置动作链接成功");
         } catch (RuntimeException e) {
             String msg = e.getMessage();
-            ro.setResult((byte) -1);
+            ro.setResult(ResultDic.FAIL);
             ro.setMsg(msg);
         } finally {
             return ro;
@@ -145,8 +145,9 @@ public class PfmActiUrnCtrl {
     }
 
     /**
-     *  查询动作URN
-     *  @mbg.overrideByMethodName
+     * 查询动作URN
+     *
+     * @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/actiurn")
     List<PfmActiUrnMo> list(PfmActiUrnMo mo) {

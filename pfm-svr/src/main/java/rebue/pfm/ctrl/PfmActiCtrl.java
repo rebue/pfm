@@ -1,6 +1,8 @@
 package rebue.pfm.ctrl;
 
 import com.github.pagehelper.PageInfo;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,174 +15,184 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rebue.pfm.mo.PfmActiMo;
-import rebue.pfm.ro.PfmActiRo;
 import rebue.pfm.svc.PfmActiSvc;
+import rebue.robotech.dic.ResultDic;
+import rebue.robotech.ro.Ro;
 
+/**
+ * 动作信息
+ *
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
+ */
 @RestController
 public class PfmActiCtrl {
 
-	/**
-	 * @mbg.generated
-	 */
-	private static final Logger _log = LoggerFactory.getLogger(PfmActiCtrl.class);
+    /**
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    private static final Logger _log = LoggerFactory.getLogger(PfmActiCtrl.class);
 
-	/**
-	 * @mbg.generated
-	 */
-	@Resource
-	private PfmActiSvc svc;
+    /**
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    @Resource
+    private PfmActiSvc svc;
 
-	/**
-	 * 有唯一约束的字段名称
-	 *
-	 * @mbg.generated
-	 */
-	private String _uniqueFilesName = "某字段内容";
+    /**
+     * 有唯一约束的字段名称
+     *
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    private String _uniqueFilesName = "某字段内容";
 
-	/**
-	 * 添加动作信息
-	 *
-	 * @mbg.generated
-	 */
-	@PostMapping("/pfm/acti")
-	PfmActiRo add(@RequestBody PfmActiMo mo) throws Exception {
-		_log.info("add PfmActiMo:" + mo);
-		PfmActiRo ro = new PfmActiRo();
-		try {
-			int result = svc.add(mo);
-			if (result == 1) {
-				String msg = "添加成功";
-				_log.info("{}: mo-{}", msg, mo);
-				ro.setMsg(msg);
-				ro.setResult((byte) 1);
-				return ro;
-			} else {
-				String msg = "添加失败";
-				_log.error("{}: mo-{}", msg, mo);
-				ro.setMsg(msg);
-				ro.setResult((byte) -1);
-				return ro;
-			}
-		} catch (DuplicateKeyException e) {
-			String msg = "添加失败，" + _uniqueFilesName + "已存在，不允许出现重复";
-			_log.error("{}: mo-{}", msg, mo);
-			ro.setMsg(msg);
-			ro.setResult((byte) -1);
-			return ro;
-		}
-	}
+    /**
+     * 添加动作信息
+     *
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    @PostMapping("/pfm/acti")
+    Ro add(@RequestBody PfmActiMo mo) throws Exception {
+        _log.info("add PfmActiMo:" + mo);
+        Ro ro = new Ro();
+        try {
+            int result = svc.add(mo);
+            if (result == 1) {
+                String msg = "添加成功";
+                _log.info("{}: mo-{}", msg, mo);
+                ro.setMsg(msg);
+                ro.setResult(ResultDic.SUCCESS);
+                return ro;
+            } else {
+                String msg = "添加失败";
+                _log.error("{}: mo-{}", msg, mo);
+                ro.setMsg(msg);
+                ro.setResult(ResultDic.FAIL);
+                return ro;
+            }
+        } catch (DuplicateKeyException e) {
+            String msg = "添加失败，" + _uniqueFilesName + "已存在，不允许出现重复";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        } catch (RuntimeException e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String msg = "修改失败，出现运行时异常(" + sdf.format(new Date()) + ")";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        }
+    }
 
-	/**
-	 * 修改动作信息
-	 *
-	 * @mbg.generated
-	 */
-	@PutMapping("/pfm/acti")
-	PfmActiRo modify(@RequestBody PfmActiMo mo) throws Exception {
-		_log.info("modify PfmActiMo:" + mo);
-		PfmActiRo ro = new PfmActiRo();
-		try {
-			int result = svc.modify(mo);
-			if (result == 1) {
-				String msg = "修改成功";
-				_log.info("{}: mo-{}", msg, mo);
-				ro.setMsg(msg);
-				ro.setResult((byte) 1);
-				return ro;
-			} else {
-				String msg = "修改失败";
-				_log.error("{}: mo-{}", msg, mo);
-				ro.setMsg(msg);
-				ro.setResult((byte) -1);
-				return ro;
-			}
-		} catch (DuplicateKeyException e) {
-			String msg = "修改失败，" + _uniqueFilesName + "已存在，不允许出现重复";
-			_log.error("{}: mo-{}", msg, mo);
-			ro.setMsg(msg);
-			ro.setResult((byte) -1);
-			return ro;
-		}
-	}
+    /**
+     * 修改动作信息
+     *
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    @PutMapping("/pfm/acti")
+    Ro modify(@RequestBody PfmActiMo mo) throws Exception {
+        _log.info("modify PfmActiMo:" + mo);
+        Ro ro = new Ro();
+        try {
+            if (svc.modify(mo) == 1) {
+                String msg = "修改成功";
+                _log.info("{}: mo-{}", msg, mo);
+                ro.setMsg(msg);
+                ro.setResult(ResultDic.SUCCESS);
+                return ro;
+            } else {
+                String msg = "修改失败";
+                _log.error("{}: mo-{}", msg, mo);
+                ro.setMsg(msg);
+                ro.setResult(ResultDic.FAIL);
+                return ro;
+            }
+        } catch (DuplicateKeyException e) {
+            String msg = "修改失败，" + _uniqueFilesName + "已存在，不允许出现重复";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        } catch (RuntimeException e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String msg = "修改失败，出现运行时异常(" + sdf.format(new Date()) + ")";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        }
+    }
 
-	/**
-	 * 查询动作信息
-	 *
-	 * @mbg.generated
-	 */
-	@GetMapping("/pfm/acti")
-	PageInfo<PfmActiMo> list(PfmActiMo mo, @RequestParam("pageNum") int pageNum,
-			@RequestParam("pageSize") int pageSize) {
-		_log.info("list PfmActiMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
-		if (pageSize > 50) {
-			String msg = "pageSize不能大于50";
-			_log.error(msg);
-			throw new IllegalArgumentException(msg);
-		}
-		PageInfo<PfmActiMo> result = svc.list(mo, pageNum, pageSize);
-		_log.info("result: " + result);
-		return result;
-	}
+    /**
+     * 删除动作信息
+     *
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    @DeleteMapping("/pfm/acti")
+    Ro del(@RequestParam("id") java.lang.Long id) {
+        _log.info("save PfmActiMo:" + id);
+        int result = svc.del(id);
+        Ro ro = new Ro();
+        if (result == 1) {
+            String msg = "删除成功";
+            _log.info("{}: id-{}", msg, id);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.SUCCESS);
+            return ro;
+        } else {
+            String msg = "删除失败，找不到该记录";
+            _log.error("{}: id-{}", msg, id);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        }
+    }
 
-	/**
-	 * 获取单个动作信息
-	 *
-	 * @mbg.generated
-	 */
-	@GetMapping("/pfm/acti/getbyid")
-	PfmActiRo getById(@RequestParam("id") java.lang.Long id) {
-		_log.info("get PfmActiMo by id: " + id);
-		PfmActiMo result = svc.getById(id);
-		_log.info("get: " + result);
-		PfmActiRo ro = new PfmActiRo();
-		if (result == null) {
-			String msg = "获取失败，没有找到该条记录";
-			_log.error("{}: id-{}", msg, id);
-			ro.setMsg(msg);
-			ro.setResult((byte) -1);
-			return ro;
-		} else {
-			String msg = "获取成功";
-			_log.info("{}: id-{}", msg, id);
-			ro.setMsg(msg);
-			ro.setResult((byte) 1);
-			ro.setRecord(result);
-			return ro;
-		}
-	}
+    /**
+     * 查询动作信息
+     *
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    @GetMapping("/pfm/acti")
+    PageInfo<PfmActiMo> list(PfmActiMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+        _log.info("list PfmActiMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
+        if (pageSize > 50) {
+            String msg = "pageSize不能大于50";
+            _log.error(msg);
+            throw new IllegalArgumentException(msg);
+        }
+        PageInfo<PfmActiMo> result = svc.list(mo, pageNum, pageSize);
+        _log.info("result: " + result);
+        return result;
+    }
 
-	/**
-	 * 删除动作信息
-	 * 
-	 * @mbg.overrideByMethodName
-	 */
-	@DeleteMapping("/pfm/acti")
-	PfmActiRo del(@RequestParam("id") java.lang.Long id) {
-		_log.info("save PfmActiMo:" + id);
-		return svc.delEx(id);
-	}
+    /**
+     * 获取单个动作信息
+     *
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    @GetMapping("/pfm/acti/getbyid")
+    PfmActiMo getById(@RequestParam("id") java.lang.Long id) {
+        _log.info("get PfmActiMo by id: " + id);
+        return svc.getById(id);
+    }
 
-	/**
-	 * 是否启用动作
-	 * 
-	 * @param mo
-	 * @return
-	 */
-	@PutMapping("/pfm/acti/enable")
-	PfmActiRo enable(@RequestBody PfmActiMo mo) {
-		_log.info("设置是否启用动作的参数为：{}", mo);
-		return svc.enable(mo);
-	}
+    /**
+     * 是否启用动作
+     */
+    @PutMapping("/pfm/acti/enable")
+    Ro enable(@RequestBody PfmActiMo mo) {
+        _log.info("设置是否启用动作的参数为：{}", mo);
+        return svc.enable(mo);
+    }
 
-	/**
-	 * 设置是否鉴权
-	 * 
-	 * @param mo
-	 * @return
-	 */
-	@PutMapping("/pfm/acti/auth")
-	PfmActiRo auth(@RequestBody PfmActiMo mo) {
-		_log.info("设置是否鉴权的参数为：{}", mo);
-		return svc.auth(mo);
-	}
+    /**
+     * 设置是否鉴权
+     */
+    @PutMapping("/pfm/acti/auth")
+    Ro auth(@RequestBody PfmActiMo mo) {
+        _log.info("设置是否鉴权的参数为：{}", mo);
+        return svc.auth(mo);
+    }
 }

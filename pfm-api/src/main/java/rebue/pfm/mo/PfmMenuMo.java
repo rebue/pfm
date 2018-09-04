@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * 数据库表: PFM_MENU
  *
- * @mbg.generated 自动生成，如需修改，请删除本行
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
  */
 @JsonInclude(Include.NON_NULL)
 public class PfmMenuMo implements Serializable {
@@ -49,6 +49,15 @@ public class PfmMenuMo implements Serializable {
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String name;
+
+    /**
+     *    标题(点击菜单后显示在内容页面的标题)
+     *
+     *    数据库字段: PFM_MENU.TITLE
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    private String title;
 
     /**
      *    路径
@@ -180,6 +189,28 @@ public class PfmMenuMo implements Serializable {
     }
 
     /**
+     *    标题(点击菜单后显示在内容页面的标题)
+     *
+     *    数据库字段: PFM_MENU.TITLE
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     *    标题(点击菜单后显示在内容页面的标题)
+     *
+     *    数据库字段: PFM_MENU.TITLE
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
      *    路径
      *
      *    数据库字段: PFM_MENU.PATH
@@ -280,6 +311,7 @@ public class PfmMenuMo implements Serializable {
         sb.append(", sysId=").append(sysId);
         sb.append(", code=").append(code);
         sb.append(", name=").append(name);
+        sb.append(", title=").append(title);
         sb.append(", path=").append(path);
         sb.append(", isEnabled=").append(isEnabled);
         sb.append(", icon=").append(icon);

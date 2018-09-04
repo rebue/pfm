@@ -2,29 +2,29 @@ package rebue.pfm.svc;
 
 import java.util.List;
 import rebue.pfm.mo.PfmActiMenuMo;
-import rebue.pfm.ro.PfmActiMenuRo;
 import rebue.pfm.to.PfmModifyActimenuTo;
+import rebue.robotech.ro.Ro;
 import rebue.robotech.svc.MybatisBaseSvc;
 
 /**
  * 动作菜单
- * @author lbl
+ *
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
  */
 public interface PfmActiMenuSvc extends MybatisBaseSvc<PfmActiMenuMo, java.lang.Long> {
 
     /**
-     *  查询动作菜单
-     *  @param mo
-     *  @return
-     *  @mbg.overrideByMethodName
+     * 查询动作菜单
+     *
+     * @mbg.overrideByMethodName
      */
+    @Override
     List<PfmActiMenuMo> list(PfmActiMenuMo mo);
 
     /**
-     *  设置动作菜单
-     *  @param to
-     *  @return
-     *  @mbg.overrideByMethodName
+     * 设置动作菜单
+     *
+     * @mbg.overrideByMethodName
      */
-    PfmActiMenuRo modify(PfmModifyActimenuTo to);
+    Ro modify(PfmModifyActimenuTo to);
 }

@@ -19,12 +19,5 @@
 		"targetFile": "${entityName}Ctrl.java",
 		"isGenTargetOnMiddleTable": true,
 		"backup": false
-	},
-	{
-		"templateName": "ro.btl",
-		"targetDir": "../pfm-api/src/main/java/${modulePath}/ro/",
-		"targetFile": "${entityName}Ro.java",
-		"isGenTargetOnMiddleTable": true,
-		"backup": false
 	}
 ]

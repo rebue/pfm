@@ -1,5 +1,7 @@
 package rebue.pfm.ctrl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.slf4j.Logger;
@@ -13,19 +15,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rebue.pfm.mo.PfmMenuMo;
-import rebue.pfm.ro.PfmMenuRo;
 import rebue.pfm.svc.PfmMenuSvc;
+import rebue.robotech.dic.ResultDic;
+import rebue.robotech.ro.Ro;
 
+/**
+ * 菜单信息
+ *
+ * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
+ */
 @RestController
 public class PfmMenuCtrl {
 
     /**
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final Logger _log = LoggerFactory.getLogger(PfmMenuCtrl.class);
 
     /**
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Resource
     private PfmMenuSvc svc;
@@ -33,39 +41,46 @@ public class PfmMenuCtrl {
     /**
      * 有唯一约束的字段名称
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     private String _uniqueFilesName = "某字段内容";
 
     /**
      * 添加菜单信息
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @PostMapping("/pfm/menu")
-    PfmMenuRo add(@RequestBody PfmMenuMo mo) throws Exception {
+    Ro add(@RequestBody PfmMenuMo mo) throws Exception {
         _log.info("add PfmMenuMo:" + mo);
-        PfmMenuRo ro = new PfmMenuRo();
+        Ro ro = new Ro();
         try {
             int result = svc.add(mo);
             if (result == 1) {
                 String msg = "添加成功";
                 _log.info("{}: mo-{}", msg, mo);
                 ro.setMsg(msg);
-                ro.setResult((byte) 1);
+                ro.setResult(ResultDic.SUCCESS);
                 return ro;
             } else {
                 String msg = "添加失败";
                 _log.error("{}: mo-{}", msg, mo);
                 ro.setMsg(msg);
-                ro.setResult((byte) -1);
+                ro.setResult(ResultDic.FAIL);
                 return ro;
             }
         } catch (DuplicateKeyException e) {
             String msg = "添加失败，" + _uniqueFilesName + "已存在，不允许出现重复";
             _log.error("{}: mo-{}", msg, mo);
             ro.setMsg(msg);
-            ro.setResult((byte) -1);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        } catch (RuntimeException e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String msg = "修改失败，出现运行时异常(" + sdf.format(new Date()) + ")";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
             return ro;
         }
     }
@@ -73,32 +88,38 @@ public class PfmMenuCtrl {
     /**
      * 修改菜单信息
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @PutMapping("/pfm/menu")
-    PfmMenuRo modify(@RequestBody PfmMenuMo mo) throws Exception {
+    Ro modify(@RequestBody PfmMenuMo mo) throws Exception {
         _log.info("modify PfmMenuMo:" + mo);
-        PfmMenuRo ro = new PfmMenuRo();
+        Ro ro = new Ro();
         try {
-            int result = svc.modify(mo);
-            if (result == 1) {
+            if (svc.modify(mo) == 1) {
                 String msg = "修改成功";
                 _log.info("{}: mo-{}", msg, mo);
                 ro.setMsg(msg);
-                ro.setResult((byte) 1);
+                ro.setResult(ResultDic.SUCCESS);
                 return ro;
             } else {
                 String msg = "修改失败";
                 _log.error("{}: mo-{}", msg, mo);
                 ro.setMsg(msg);
-                ro.setResult((byte) -1);
+                ro.setResult(ResultDic.FAIL);
                 return ro;
             }
         } catch (DuplicateKeyException e) {
             String msg = "修改失败，" + _uniqueFilesName + "已存在，不允许出现重复";
             _log.error("{}: mo-{}", msg, mo);
             ro.setMsg(msg);
-            ro.setResult((byte) -1);
+            ro.setResult(ResultDic.FAIL);
+            return ro;
+        } catch (RuntimeException e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String msg = "修改失败，出现运行时异常(" + sdf.format(new Date()) + ")";
+            _log.error("{}: mo-{}", msg, mo);
+            ro.setMsg(msg);
+            ro.setResult(ResultDic.FAIL);
             return ro;
         }
     }
@@ -106,45 +127,18 @@ public class PfmMenuCtrl {
     /**
      * 获取单个菜单信息
      *
-     * @mbg.generated
+     * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @GetMapping("/pfm/menu/getbyid")
-    PfmMenuRo getById(@RequestParam("id") java.lang.Long id) {
+    PfmMenuMo getById(@RequestParam("id") java.lang.Long id) {
         _log.info("get PfmMenuMo by id: " + id);
-        PfmMenuMo result = svc.getById(id);
-        _log.info("get: " + result);
-        PfmMenuRo ro = new PfmMenuRo();
-        if (result == null) {
-            String msg = "获取失败，没有找到该条记录";
-            _log.error("{}: id-{}", msg, id);
-            ro.setMsg(msg);
-            ro.setResult((byte) -1);
-            return ro;
-        } else {
-            String msg = "获取成功";
-            _log.info("{}: id-{}", msg, id);
-            ro.setMsg(msg);
-            ro.setResult((byte) 1);
-            ro.setRecord(result);
-            return ro;
-        }
+        return svc.getById(id);
     }
 
     /**
-     *  删除菜单信息
+     * 查询菜单信息
      *
-     *  @mbg.overrideByMethodName
-     */
-    @DeleteMapping("/pfm/menu")
-    PfmMenuRo del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmMenuMo:" + id);
-        return svc.delEx(id);
-    }
-
-    /**
-     *  查询菜单信息
-     *
-     *  @mbg.overrideByMethodName
+     * @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/menu")
     List<PfmMenuMo> list(PfmMenuMo mo) {
@@ -153,16 +147,22 @@ public class PfmMenuCtrl {
     }
 
     /**
-     *  是否启用菜单
+     * 删除菜单信息
      *
-     *  @param mo
-     *  @return
+     * @mbg.overrideByMethodName
+     */
+    @DeleteMapping("/pfm/menu")
+    Ro del(@RequestParam("id") java.lang.Long id) {
+        _log.info("delete PfmMenuMo:" + id);
+        return svc.delEx(id);
+    }
+
+    /**
+     * 启用菜单
      */
     @PutMapping("/pfm/menu/enable")
-    PfmMenuRo enable(@RequestBody PfmMenuMo mo) {
+    Ro enable(@RequestBody PfmMenuMo mo) {
         _log.info("是否启用菜单的参数为：｛｝", mo);
-        PfmMenuRo ro = svc.whetherToEnableMenu(mo.getId(), mo.getIsEnabled());
-        _log.info("是否启用菜单的返回值为：｛｝", ro);
-        return ro;
+        return svc.enable(mo.getId(), mo.getIsEnabled());
     }
 }
