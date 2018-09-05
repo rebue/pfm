@@ -1,6 +1,5 @@
 package rebue.pfm.ctrl;
 
-import com.github.pagehelper.PageInfo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.Resource;
@@ -152,24 +151,6 @@ public class PfmFuncCtrl {
     }
 
     /**
-     * 查询功能信息
-     *
-     * @mbg.generated 自动生成，如需修改，请删除本行
-     */
-    @GetMapping("/pfm/func")
-    PageInfo<PfmFuncMo> list(PfmFuncMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
-        _log.info("list PfmFuncMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
-        if (pageSize > 50) {
-            String msg = "pageSize不能大于50";
-            _log.error(msg);
-            throw new IllegalArgumentException(msg);
-        }
-        PageInfo<PfmFuncMo> result = svc.list(mo, pageNum, pageSize);
-        _log.info("result: " + result);
-        return result;
-    }
-
-    /**
      * 获取单个功能信息
      *
      * @mbg.generated 自动生成，如需修改，请删除本行
@@ -185,6 +166,8 @@ public class PfmFuncCtrl {
 
     /**
      * 查询功能信息
+     *
+     * @mbg.overrideByMethodName
      */
     @GetMapping("/pfm/func")
     PfmFuncAndActiRo list(PfmFuncMo mo) {
@@ -197,9 +180,6 @@ public class PfmFuncCtrl {
 
     /**
      * 设置功能是否启用
-     *
-     * @param mo
-     * @return
      */
     @PutMapping("/pfm/func/enable")
     Ro enable(@RequestBody PfmFuncMo mo) {
