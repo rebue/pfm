@@ -53,7 +53,7 @@ public class PfmActiMenuCtrl {
      */
     @PostMapping("/pfm/actimenu")
     Ro add(@RequestBody PfmActiMenuMo mo) throws Exception {
-        _log.info("add PfmActiMenuMo:" + mo);
+        _log.info("add PfmActiMenuMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -93,7 +93,7 @@ public class PfmActiMenuCtrl {
      */
     @DeleteMapping("/pfm/actimenu")
     Ro del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmActiMenuMo:" + id);
+        _log.info("del PfmActiMenuMo by id: {}", id);
         int result = svc.del(id);
         Ro ro = new Ro();
         if (result == 1) {

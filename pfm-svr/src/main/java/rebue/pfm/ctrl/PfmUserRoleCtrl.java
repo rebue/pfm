@@ -47,7 +47,11 @@ public class PfmUserRoleCtrl {
      * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @GetMapping("/pfm/userrole")
-    PageInfo<PfmUserRoleMo> list(PfmUserRoleMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+    PageInfo<PfmUserRoleMo> list(PfmUserRoleMo mo, @RequestParam(value = "pageNum", required = false) Integer pageNum, @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        if (pageNum == null)
+            pageNum = 1;
+        if (pageSize == null)
+            pageSize = 5;
         _log.info("list PfmUserRoleMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
         if (pageSize > 50) {
             String msg = "pageSize不能大于50";

@@ -52,7 +52,7 @@ public class PfmMenuCtrl {
      */
     @PostMapping("/pfm/menu")
     Ro add(@RequestBody PfmMenuMo mo) throws Exception {
-        _log.info("add PfmMenuMo:" + mo);
+        _log.info("add PfmMenuMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -92,7 +92,7 @@ public class PfmMenuCtrl {
      */
     @PutMapping("/pfm/menu")
     Ro modify(@RequestBody PfmMenuMo mo) throws Exception {
-        _log.info("modify PfmMenuMo:" + mo);
+        _log.info("modify PfmMenuMo: {}", mo);
         Ro ro = new Ro();
         try {
             if (svc.modify(mo) == 1) {

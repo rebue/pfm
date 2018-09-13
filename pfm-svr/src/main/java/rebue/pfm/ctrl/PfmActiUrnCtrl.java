@@ -53,7 +53,7 @@ public class PfmActiUrnCtrl {
      */
     @PostMapping("/pfm/actiurn")
     Ro add(@RequestBody PfmActiUrnMo mo) throws Exception {
-        _log.info("add PfmActiUrnMo:" + mo);
+        _log.info("add PfmActiUrnMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -93,7 +93,7 @@ public class PfmActiUrnCtrl {
      */
     @DeleteMapping("/pfm/actiurn")
     Ro del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmActiUrnMo:" + id);
+        _log.info("del PfmActiUrnMo by id: {}", id);
         int result = svc.del(id);
         Ro ro = new Ro();
         if (result == 1) {

@@ -53,7 +53,7 @@ public class PfmFuncCtrl {
      */
     @PostMapping("/pfm/func")
     Ro add(@RequestBody PfmFuncMo mo) throws Exception {
-        _log.info("add PfmFuncMo:" + mo);
+        _log.info("add PfmFuncMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -93,7 +93,7 @@ public class PfmFuncCtrl {
      */
     @PutMapping("/pfm/func")
     Ro modify(@RequestBody PfmFuncMo mo) throws Exception {
-        _log.info("modify PfmFuncMo:" + mo);
+        _log.info("modify PfmFuncMo: {}", mo);
         Ro ro = new Ro();
         try {
             if (svc.modify(mo) == 1) {
@@ -132,7 +132,7 @@ public class PfmFuncCtrl {
      */
     @DeleteMapping("/pfm/func")
     Ro del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmFuncMo:" + id);
+        _log.info("del PfmFuncMo by id: {}", id);
         int result = svc.del(id);
         Ro ro = new Ro();
         if (result == 1) {

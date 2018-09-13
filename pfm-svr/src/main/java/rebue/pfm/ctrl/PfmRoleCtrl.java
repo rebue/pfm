@@ -52,7 +52,7 @@ public class PfmRoleCtrl {
      */
     @PostMapping("/pfm/role")
     Ro add(@RequestBody PfmRoleMo mo) throws Exception {
-        _log.info("add PfmRoleMo:" + mo);
+        _log.info("add PfmRoleMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -92,7 +92,7 @@ public class PfmRoleCtrl {
      */
     @PutMapping("/pfm/role")
     Ro modify(@RequestBody PfmRoleMo mo) throws Exception {
-        _log.info("modify PfmRoleMo:" + mo);
+        _log.info("modify PfmRoleMo: {}", mo);
         Ro ro = new Ro();
         try {
             if (svc.modify(mo) == 1) {

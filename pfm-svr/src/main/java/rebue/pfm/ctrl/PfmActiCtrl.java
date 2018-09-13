@@ -52,7 +52,7 @@ public class PfmActiCtrl {
      */
     @PostMapping("/pfm/acti")
     Ro add(@RequestBody PfmActiMo mo) throws Exception {
-        _log.info("add PfmActiMo:" + mo);
+        _log.info("add PfmActiMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -92,7 +92,7 @@ public class PfmActiCtrl {
      */
     @PutMapping("/pfm/acti")
     Ro modify(@RequestBody PfmActiMo mo) throws Exception {
-        _log.info("modify PfmActiMo:" + mo);
+        _log.info("modify PfmActiMo: {}", mo);
         Ro ro = new Ro();
         try {
             if (svc.modify(mo) == 1) {
@@ -131,7 +131,7 @@ public class PfmActiCtrl {
      */
     @DeleteMapping("/pfm/acti")
     Ro del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmActiMo:" + id);
+        _log.info("del PfmActiMo by id: {}", id);
         int result = svc.del(id);
         Ro ro = new Ro();
         if (result == 1) {
@@ -155,7 +155,11 @@ public class PfmActiCtrl {
      * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @GetMapping("/pfm/acti")
-    PageInfo<PfmActiMo> list(PfmActiMo mo, @RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+    PageInfo<PfmActiMo> list(PfmActiMo mo, @RequestParam(value = "pageNum", required = false) Integer pageNum, @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        if (pageNum == null)
+            pageNum = 1;
+        if (pageSize == null)
+            pageSize = 5;
         _log.info("list PfmActiMo:" + mo + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
         if (pageSize > 50) {
             String msg = "pageSize不能大于50";

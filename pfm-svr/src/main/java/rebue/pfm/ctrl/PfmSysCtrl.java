@@ -45,7 +45,7 @@ public class PfmSysCtrl {
      */
     @PostMapping("/pfm/sys")
     Ro add(@RequestBody PfmSysMo mo) throws Exception {
-        _log.info("add PfmSysMo:" + mo);
+        _log.info("add PfmSysMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -85,7 +85,7 @@ public class PfmSysCtrl {
      */
     @PutMapping("/pfm/sys")
     Ro modify(@RequestBody PfmSysMo mo) throws Exception {
-        _log.info("modify PfmSysMo:" + mo);
+        _log.info("modify PfmSysMo: {}", mo);
         Ro ro = new Ro();
         try {
             if (svc.modify(mo) == 1) {
@@ -124,7 +124,7 @@ public class PfmSysCtrl {
      */
     @DeleteMapping("/pfm/sys")
     Ro del(@RequestParam("id") java.lang.String id) {
-        _log.info("save PfmSysMo:" + id);
+        _log.info("del PfmSysMo by id: {}", id);
         int result = svc.del(id);
         Ro ro = new Ro();
         if (result == 1) {

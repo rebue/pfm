@@ -53,7 +53,7 @@ public class PfmRoleActiCtrl {
      */
     @PostMapping("/pfm/roleacti")
     Ro add(@RequestBody PfmRoleActiMo mo) throws Exception {
-        _log.info("add PfmRoleActiMo:" + mo);
+        _log.info("add PfmRoleActiMo: {}", mo);
         Ro ro = new Ro();
         try {
             int result = svc.add(mo);
@@ -93,7 +93,7 @@ public class PfmRoleActiCtrl {
      */
     @DeleteMapping("/pfm/roleacti")
     Ro del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmRoleActiMo:" + id);
+        _log.info("del PfmRoleActiMo by id: {}", id);
         int result = svc.del(id);
         Ro ro = new Ro();
         if (result == 1) {
