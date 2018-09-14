@@ -48,7 +48,7 @@ public class PfmUserLoginCtrl {
     PfmCurrentUserRo getCurrentUser(HttpServletRequest req) throws ParseException {
         _log.info("getCurrentUser");
         // 从签名中获取系统ID
-        String sysId = (String) JwtUtils.getJwtItemInCookie(req, "sysId");
+        String sysId = JwtUtils.getJwtSysIdInCookie(req);
         return svc.getCurrentUser(sysId);
     }
 
