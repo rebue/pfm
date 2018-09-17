@@ -9,6 +9,12 @@ spring:
   metrics:
     servo:
       enabled: false
+      
+# 使用Apache HttpClient替换Feign原生httpclient
+# feign-httpclient内含Apache HttpClient
+feign:
+  httpclient:
+    enabled: true
     
 eureka:
   instance:

@@ -16,7 +16,6 @@
 	<modules>
 		<module>pfm-api</module>
 		<module>pfm-bll</module>
-		<module>pfm-svr-feign</module>
 		<module>pfm-gen</module>
 		<module>pfm-svr</module>
 	</modules>
