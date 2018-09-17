@@ -12,7 +12,7 @@ public interface PfmUrnMapper {
     /**
      * 查询指定用户在某系统中的所拥有的菜单
      */
-    @Select("SELECT c.* FROM  PFM_USER_ROLE a " //
+    @Select("SELECT DISTINCT c.URN FROM  PFM_USER_ROLE a " //
             + " LEFT JOIN PFM_ROLE_ACTI b ON a.ROLE_ID = b.ROLE_ID "//
             + " LEFT JOIN PFM_ACTI_URN c ON b.ACTI_ID = c.ACTI_ID "//
             + "WHERE a.SYS_ID = #{sysId} AND a.USER_ID = #{userId}")
