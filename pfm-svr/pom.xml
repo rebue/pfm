@@ -18,7 +18,7 @@
 
 		<dependency>
 			<groupId>com.github.rebue.suc</groupId>
-			<artifactId>suc-api</artifactId>
+			<artifactId>suc-svr-feign</artifactId>
 		</dependency>
 
 		<dependency>

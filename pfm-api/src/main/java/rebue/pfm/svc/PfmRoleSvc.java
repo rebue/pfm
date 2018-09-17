@@ -1,5 +1,7 @@
 package rebue.pfm.svc;
 
+import java.util.List;
+
 import rebue.pfm.mo.PfmRoleMo;
 import rebue.robotech.ro.Ro;
 import rebue.robotech.svc.MybatisBaseSvc;
@@ -20,4 +22,10 @@ public interface PfmRoleSvc extends MybatisBaseSvc<PfmRoleMo, java.lang.Long> {
      * 设置角色是否启用
      */
     Ro enable(PfmRoleMo mo);
+
+    /**
+     * 获取指定系统的角色列表
+     */
+    List<PfmRoleMo> listBySysId(String sysId);
+
 }

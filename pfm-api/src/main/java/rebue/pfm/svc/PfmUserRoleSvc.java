@@ -1,48 +1,122 @@
 package rebue.pfm.svc;
 
-import com.github.pagehelper.PageInfo;
+import java.util.List;
+
 import rebue.pfm.mo.PfmUserRoleMo;
-import rebue.pfm.to.PfmModifyUserRoleTo;
-import rebue.robotech.ro.Ro;
+import rebue.pfm.to.RoleMoveUsersTo;
+import rebue.pfm.to.UserMoveRolesTo;
 import rebue.robotech.svc.MybatisBaseSvc;
-import rebue.suc.mo.SucUserMo;
+import rebue.suc.ro.UsersRo;
 
 /**
  * 用户角色
- *
- * @mbg.generated 自动生成的注释，如需修改本注释，请删除本行
  */
 public interface PfmUserRoleSvc extends MybatisBaseSvc<PfmUserRoleMo, java.lang.Long> {
-
     /**
-     * 添加用户角色
-     */
-    Ro addEx(PfmUserRoleMo mo);
-
-    /**
-     * 设置用户角色
-     *
-     * @param to
-     * @return
-     */
-    Ro modifyEx(PfmModifyUserRoleTo to);
-
-    /**
-     * 删除用户角色
-     *
-     * @param mo
-     * @return
-     */
-    Ro delEx(PfmUserRoleMo mo);
-
-    /**
-     * 根据系统id和角色id查询用户分页信息
-     *
+     * 获取用户在指定系统下的角色ID列表
+     * 
      * @param sysId
-     * @param roleId
-     * @param pageNum
-     * @param pageSize
-     * @return
+     *            系统ID
+     * @param userId
+     *            用户ID
      */
-    PageInfo<SucUserMo> listUserBySysIdAndRoleId(String sysId, Long roleId, int pageNum, int pageSize);
+    List<Long> listRoleIds(String sysId, Long userId);
+
+    /**
+     * 获取角色的用户ID列表
+     * 
+     * @param sysId
+     *            系统ID
+     * @param roleId
+     *            角色ID
+     */
+    List<Long> listUserIds(Long roleId);
+
+    /**
+     * 用户添加角色
+     */
+    void addUserRoles(UserMoveRolesTo to);
+
+    /**
+     * 移除用户的角色
+     */
+    void delUserRoles(List<Long> moveIds);
+
+    /**
+     * 角色添加用户
+     */
+    void addRoleUsers(RoleMoveUsersTo to);
+
+    /**
+     * 移除角色的用户
+     */
+    void delRoleUsers(List<Long> moveIds);
+
+    /**
+     * 查询指定角色的已添加的用户列表
+     * 
+     * @param roleId
+     *            角色ID
+     * @param keys
+     *            模糊查询用户的关键字
+     * @param pageNum
+     *            第几页
+     * @param pageSize
+     *            每页大小
+     */
+    UsersRo listAddedUsers(Long roleId, String keys, Integer pageNum, Integer pageSize);
+
+    /**
+     * 查询指定角色的未添加的用户列表
+     * 
+     * @param roleId
+     *            角色ID
+     * @param keys
+     *            模糊查询用户的关键字
+     * @param pageNum
+     *            第几页
+     * @param pageSize
+     *            每页大小
+     */
+    UsersRo listUnaddedUsers(Long roleId, String keys, Integer pageNum, Integer pageSize);
+
+    /**
+     * 查询指定角色的已添加和未添加的用户列表
+     * 
+     * @param roleId
+     *            角色ID
+     * @param pageSize
+     *            每页大小
+     * @param addedKeys
+     *            模糊查询已添加用户的关键字
+     * @param addedPageNum
+     *            已添加用户第几页
+     * @param unaddedKeys
+     *            模糊查询未添加用户的关键字
+     * @param unaddedPageNum
+     *            未添加用户第几页
+     */
+    UsersRo listAddedAndUnaddedUsers(Long roleId, Integer pageSize, String addedKeys, Integer addedPageNum, String unaddedKeys, Integer unaddedPageNum);
+
+//    /**
+//     * 添加用户角色
+//     */
+//    Ro addEx(PfmUserRoleMo mo);
+//
+//    /**
+//     * 设置用户角色
+//     *
+//     * @param to
+//     * @return
+//     */
+//    Ro modifyEx(PfmModifyUserRoleTo to);
+//
+//    /**
+//     * 删除用户角色
+//     *
+//     * @param mo
+//     * @return
+//     */
+//    Ro delEx(PfmUserRoleMo mo);
+//
 }

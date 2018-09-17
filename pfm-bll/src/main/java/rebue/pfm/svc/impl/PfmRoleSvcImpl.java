@@ -1,11 +1,15 @@
 package rebue.pfm.svc.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import rebue.pfm.mapper.PfmRoleActiMapper;
 import rebue.pfm.mapper.PfmRoleMapper;
 import rebue.pfm.mapper.PfmUserRoleMapper;
@@ -103,4 +107,15 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
         ro.setMsg("设置成功");
         return ro;
     }
+
+    /**
+     * 获取指定系统的角色列表
+     */
+    @Override
+    public List<PfmRoleMo> listBySysId(String sysId) {
+        PfmRoleMo condition = new PfmRoleMo();
+        condition.setSysId(sysId);
+        return _mapper.selectSelective(condition);
+    }
+
 }

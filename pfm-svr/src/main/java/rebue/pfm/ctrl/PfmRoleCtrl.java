@@ -3,7 +3,9 @@ package rebue.pfm.ctrl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import rebue.pfm.mo.PfmRoleMo;
 import rebue.pfm.svc.PfmRoleSvc;
 import rebue.robotech.dic.ResultDic;
@@ -30,20 +33,20 @@ public class PfmRoleCtrl {
     /**
      * @mbg.generated 自动生成，如需修改，请删除本行
      */
-    private static final Logger _log = LoggerFactory.getLogger(PfmRoleCtrl.class);
+    private static final Logger _log             = LoggerFactory.getLogger(PfmRoleCtrl.class);
 
     /**
      * @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Resource
-    private PfmRoleSvc svc;
+    private PfmRoleSvc          svc;
 
     /**
      * 有唯一约束的字段名称
      *
      * @mbg.generated 自动生成，如需修改，请删除本行
      */
-    private String _uniqueFilesName = "某字段内容";
+    private String              _uniqueFilesName = "某字段内容";
 
     /**
      * 添加角色信息
@@ -148,8 +151,6 @@ public class PfmRoleCtrl {
 
     /**
      * 删除角色信息
-     *
-     * @mbg.overrideByMethodName
      */
     @DeleteMapping("/pfm/role")
     Ro del(@RequestParam("id") java.lang.Long id) {
