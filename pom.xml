@@ -11,7 +11,7 @@
 	<groupId>com.github.rebue.pfm</groupId>
 	<artifactId>pfm</artifactId>
 	<packaging>pom</packaging>
-	<description>大卖后台</description>
+	<description>多系统的平台基础管理框架</description>
 
 	<modules>
 		<module>pfm-api</module>
