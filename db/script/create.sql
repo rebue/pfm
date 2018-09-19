@@ -1,26 +1,26 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/9/2 13:34:37                            */
+/* Created on:     2018/9/19 20:44:36                           */
 /*==============================================================*/
 
+
+drop table if exists PFM_ACTI;
 
 drop table if exists PFM_ACTI_MENU;
 
 drop table if exists PFM_ACTI_URN;
 
-drop table if exists PFM_ROLE_ACTI;
-
-drop table if exists PFM_ACTI;
-
 drop table if exists PFM_FUNC;
 
 drop table if exists PFM_MENU;
 
-drop table if exists PFM_USER_ROLE;
-
 drop table if exists PFM_ROLE;
 
+drop table if exists PFM_ROLE_ACTI;
+
 drop table if exists PFM_SYS;
+
+drop table if exists PFM_USER_ROLE;
 
 /*==============================================================*/
 /* Table: PFM_ACTI                                              */
@@ -113,7 +113,7 @@ create table PFM_ROLE
    ID                   bigint not null comment '角色ID',
    SYS_ID               varchar(20) not null comment '系统ID',
    NAME                 varchar(20) not null comment '角色名称',
-   IS_ENABLED           bool not null default false comment '是否启用',
+   IS_ENABLED           bool not null default true comment '是否启用',
    ORDER_NO             tinyint not null comment '顺序号',
    REMARK               varchar(50) comment '角色备注',
    primary key (ID),

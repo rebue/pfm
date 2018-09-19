@@ -4,8 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{4AFC14F0-2BB7-400E-AF05-2947D17BD9E7}" Name="pfm" Selected="Yes" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="pfm.ldm"/>
-		<Model Expanded="Yes" ID="{634406B7-9165-4202-B43B-89E4A134B99D}" Loaded="No" Name="pfm-mysql" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="pfm-mysql.pdm"/>
+		<Model Expanded="Yes" ID="{4AFC14F0-2BB7-400E-AF05-2947D17BD9E7}" Name="pfm" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="pfm.ldm"/>
+		<Model Expanded="Yes" ID="{634406B7-9165-4202-B43B-89E4A134B99D}" Name="pfm-mysql" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="pfm-mysql.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

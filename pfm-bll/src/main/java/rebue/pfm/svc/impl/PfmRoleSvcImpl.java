@@ -43,16 +43,17 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
     private static final Logger _log = LoggerFactory.getLogger(PfmRoleSvcImpl.class);
 
     /**
-     * @mbg.generated 自动生成，如需修改，请删除本行
+     * 添加角色
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public int add(PfmRoleMo mo) {
-        _log.info("添加角色信息");
+        _log.info("添加角色");
         // 如果id为空那么自动生成分布式id
         if (mo.getId() == null || mo.getId() == 0) {
             mo.setId(_idWorker.getId());
         }
+        mo.setOrderNo(_mapper.getMaxOrderMoBySysId(mo.getSysId()));
         return super.add(mo);
     }
 
@@ -113,9 +114,8 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
      */
     @Override
     public List<PfmRoleMo> listBySysId(String sysId) {
-        PfmRoleMo condition = new PfmRoleMo();
-        condition.setSysId(sysId);
-        return _mapper.selectSelective(condition);
+        _log.info("获取指定系统的角色列表: sysId={}", sysId);
+        return _mapper.listBySysId(sysId);
     }
 
 }

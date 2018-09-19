@@ -78,8 +78,8 @@ public class PfmActiUrnCtrl {
             return ro;
         } catch (RuntimeException e) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String msg = "修改失败，出现运行时异常(" + sdf.format(new Date()) + ")";
-            _log.error("{}: mo-{}", msg, mo);
+            String msg = "添加失败，出现运行时异常(" + sdf.format(new Date()) + ")";
+            _log.error(msg + ": mo=" + mo, e);
             ro.setMsg(msg);
             ro.setResult(ResultDic.FAIL);
             return ro;
