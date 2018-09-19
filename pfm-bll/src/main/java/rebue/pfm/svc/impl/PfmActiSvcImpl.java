@@ -68,7 +68,7 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
         // 删除动作菜单
         pfmActiMenuMapper.deleteByActiId(id);
         _log.info("删除动作的参数为：｛｝", id);
-        return del(id);
+        return super.del(id);
     }
 
     /**

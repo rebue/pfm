@@ -74,7 +74,7 @@ public class PfmFuncSvcImpl extends MybatisBaseSvcImpl<PfmFuncMo, java.lang.Long
             }
         }
         _log.info("删除功能的参数为：{}", id);
-        return del(id);
+        return super.del(id);
     }
 
     /**
