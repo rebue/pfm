@@ -174,4 +174,16 @@ public class PfmRoleCtrl {
         _log.info("设置角色是否启用的参数为:{}", mo);
         return svc.enable(mo);
     }
+    
+    /**
+     * 查询所有角色
+     * @return
+     */
+    @GetMapping("/pfm/role/listAll")
+    List<PfmRoleMo> listAll() {
+        _log.info("开始查询所有角色");
+        return svc.listAll();
+    }
+    
+    
 }

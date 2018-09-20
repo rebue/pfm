@@ -3,6 +3,7 @@ package rebue.pfm.mapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import rebue.pfm.mo.PfmActiMo;
 import rebue.robotech.mapper.MybatisBaseMapper;
@@ -59,6 +60,13 @@ public interface PfmActiMapper extends MybatisBaseMapper<PfmActiMo, Long> {
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     boolean existSelective(PfmActiMo record);
+    
+    /**
+     * 获取指定系统的最大OrderNo
+     */
+    @Select("SELECT COUNT(*) FROM PFM_ACTI WHERE FUNC_ID=#{funcId}")
+    public int getCountByFuncId(@Param("funcId") Long funcId);
+
 
     /**
      *  是否启用

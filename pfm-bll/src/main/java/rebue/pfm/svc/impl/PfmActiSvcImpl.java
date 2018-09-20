@@ -34,12 +34,15 @@ import rebue.robotech.svc.impl.MybatisBaseSvcImpl;
 public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long, PfmActiMapper> implements PfmActiSvc {
 
     /**
-     * @mbg.generated 自动生成，如需修改，请删除本行
+     * 添加动作信息
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public int add(PfmActiMo mo) {
         _log.info("添加动作信息");
+        
+        mo.setOrderNo((byte) _mapper.getCountByFuncId((mo.getFuncId())));
+        
         // 如果id为空那么自动生成分布式id
         if (mo.getId() == null || mo.getId() == 0) {
             mo.setId(_idWorker.getId());
