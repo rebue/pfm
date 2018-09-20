@@ -82,8 +82,8 @@ public interface PfmRoleMapper extends MybatisBaseMapper<PfmRoleMo, Long> {
     /**
      * 获取指定系统的最大OrderNo
      */
-    @Select("SELECT MAX(ORDER_NO) FROM PFM_ROLE WHERE SYS_ID=#{sysId}")
-    public Byte getMaxOrderMoBySysId(@Param("sysId") String sysId);
+    @Select("SELECT COUNT(*) FROM PFM_ROLE WHERE SYS_ID=#{sysId}")
+    public int getCountBySysId(@Param("sysId") String sysId);
 
     /**
      * 是否启用角色

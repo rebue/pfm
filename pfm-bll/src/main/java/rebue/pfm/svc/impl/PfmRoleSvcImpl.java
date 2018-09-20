@@ -53,7 +53,7 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
         if (mo.getId() == null || mo.getId() == 0) {
             mo.setId(_idWorker.getId());
         }
-        mo.setOrderNo(_mapper.getMaxOrderMoBySysId(mo.getSysId()));
+        mo.setOrderNo((byte) _mapper.getCountBySysId(mo.getSysId()));
         return super.add(mo);
     }
 
