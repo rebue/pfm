@@ -58,6 +58,11 @@ public interface PfmFuncMapper extends MybatisBaseMapper<PfmFuncMo, Long> {
     /**
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
+    int countSelective(PfmFuncMo record);
+
+    /**
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
     boolean existSelective(PfmFuncMo record);
 
     /**

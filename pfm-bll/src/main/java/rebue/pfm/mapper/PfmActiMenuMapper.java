@@ -58,6 +58,11 @@ public interface PfmActiMenuMapper extends MybatisBaseMapper<PfmActiMenuMo, Long
     /**
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
+    int countSelective(PfmActiMenuMo record);
+
+    /**
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
     boolean existSelective(PfmActiMenuMo record);
 
     /**

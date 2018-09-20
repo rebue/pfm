@@ -49,11 +49,15 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public int add(PfmRoleMo mo) {
         _log.info("添加角色");
+
         // 如果id为空那么自动生成分布式id
         if (mo.getId() == null || mo.getId() == 0) {
             mo.setId(_idWorker.getId());
         }
-        mo.setOrderNo((byte) _mapper.getCountBySysId(mo.getSysId()));
+
+        // 设置排序号
+        mo.setOrderNo((byte) _mapper.countSelective(mo));
+
         return super.add(mo);
     }
 

@@ -23,6 +23,8 @@
 		<plugin type="rebue.mbgx.plugin.ExistByPrimaryKeyPlugin" />
 		<!-- 该插件给Mapper及其XML文件添加existSelective()方法 -->
 		<plugin type="rebue.mbgx.plugin.ExistSelectivePlugin" />
+		<!-- 该插件给Mapper及其XML文件加上countSelective()方法 -->
+		<plugin type="rebue.mbgx.plugin.CountSelectivePlugin" />
 		<!-- 该插件给Mapper类加上@Mapper -->
 		<plugin type="rebue.mbgx.plugin.MapperAnnotationPlugin" />
 		<!-- 该插件给Mapper类加上继承的父接口 -->

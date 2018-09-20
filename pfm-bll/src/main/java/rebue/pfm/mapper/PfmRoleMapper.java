@@ -70,6 +70,11 @@ public interface PfmRoleMapper extends MybatisBaseMapper<PfmRoleMo, Long> {
     /**
      * @mbg.generated 自动生成，如需修改，请删除本行
      */
+    int countSelective(PfmRoleMo record);
+
+    /**
+     * @mbg.generated 自动生成，如需修改，请删除本行
+     */
     @Override
     boolean existSelective(PfmRoleMo record);
 
@@ -78,12 +83,6 @@ public interface PfmRoleMapper extends MybatisBaseMapper<PfmRoleMo, Long> {
      */
     @Select("SELECT * FROM PFM_ROLE WHERE SYS_ID=#{sysId} ORDER BY ORDER_NO")
     public List<PfmRoleMo> listBySysId(@Param("sysId") String sysId);
-
-    /**
-     * 获取指定系统的最大OrderNo
-     */
-    @Select("SELECT COUNT(*) FROM PFM_ROLE WHERE SYS_ID=#{sysId}")
-    public int getCountBySysId(@Param("sysId") String sysId);
 
     /**
      * 是否启用角色

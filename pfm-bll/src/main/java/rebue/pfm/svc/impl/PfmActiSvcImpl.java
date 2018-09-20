@@ -1,11 +1,13 @@
 package rebue.pfm.svc.impl;
 
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import rebue.pfm.mapper.PfmActiMapper;
 import rebue.pfm.mapper.PfmActiMenuMapper;
 import rebue.pfm.mapper.PfmActiUrnMapper;
@@ -40,23 +42,25 @@ public class PfmActiSvcImpl extends MybatisBaseSvcImpl<PfmActiMo, java.lang.Long
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public int add(PfmActiMo mo) {
         _log.info("添加动作信息");
-        
-        mo.setOrderNo((byte) _mapper.getCountByFuncId((mo.getFuncId())));
-        
+
         // 如果id为空那么自动生成分布式id
         if (mo.getId() == null || mo.getId() == 0) {
             mo.setId(_idWorker.getId());
         }
+
+        // 设置排序号
+        mo.setOrderNo((byte) _mapper.countSelective((mo)));
+
         return super.add(mo);
     }
 
     private static final Logger _log = LoggerFactory.getLogger(PfmActiSvcImpl.class);
 
     @Resource
-    private PfmActiUrnMapper pfmActiUrnMapper;
+    private PfmActiUrnMapper    pfmActiUrnMapper;
 
     @Resource
-    private PfmActiMenuMapper pfmActiMenuMapper;
+    private PfmActiMenuMapper   pfmActiMenuMapper;
 
     /**
      * 删除动作
