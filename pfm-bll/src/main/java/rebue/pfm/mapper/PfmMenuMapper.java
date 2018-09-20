@@ -87,7 +87,11 @@ public interface PfmMenuMapper extends MybatisBaseMapper<PfmMenuMo, Long> {
      */
     @// 
     Select(// 
-    "SELECT DISTINCT d.CODE, d.* FROM  PFM_USER_ROLE a " + " LEFT JOIN PFM_ROLE_ACTI b ON a.ROLE_ID = b.ROLE_ID " + // 
-    " LEFT JOIN PFM_ACTI_MENU c ON b.ACTI_ID = c.ACTI_ID " + " LEFT JOIN PFM_MENU d ON c.MENU_ID = d.ID " + "WHERE a.SYS_ID = #{sysId} AND a.USER_ID = #{userId} AND d.IS_ENABLED = TRUE")
+    "SELECT DISTINCT d.CODE, d.* FROM  PFM_USER_ROLE a " //
+    		+ " LEFT JOIN PFM_ROLE_ACTI b ON a.ROLE_ID = b.ROLE_ID " + // 
+    " LEFT JOIN PFM_ACTI_MENU c ON b.ACTI_ID = c.ACTI_ID " //
+    		+ " LEFT JOIN PFM_MENU d ON c.MENU_ID = d.ID " //
+    		+ "WHERE a.SYS_ID = #{sysId} AND a.USER_ID = #{userId} AND d.IS_ENABLED = TRUE " //
+    		+ "ORDER BY d.CODE")
     List<PfmMenuMo> selectByUserIdAndSysId(@Param("userId") Long userId, @Param("sysId") String sysId);
 }
