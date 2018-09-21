@@ -69,7 +69,7 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
      */
     @Override
     public PfmCurrentUserRo getCurrentUser(String sysId) {
-        _log.info("获取当前用户信息: sysId-{}", sysId);
+        _log.info("获取当前用户信息: sysId={}", sysId);
         CurrentUserRo currentUserRo = sucUserSvc.getCurrentUser();
         _log.info("调用用户中心的方法获取到: {}", currentUserRo);
         if (currentUserRo != null) {
