@@ -2,12 +2,13 @@ package rebue.pfm.svc.impl;
 
 import javax.annotation.Resource;
 
-import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.github.dozermapper.core.Mapper;
 
 import rebue.pfm.mapper.PfmMenuMapper;
 import rebue.pfm.mapper.PfmUrnMapper;
@@ -52,11 +53,11 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
      * 用户登录(用户名称)
      */
     @Override
-    public PfmUserLoginRo loginByUserName(LoginByUserNameTo loginTo) {
+    public PfmUserLoginRo loginByUserName(final LoginByUserNameTo loginTo) {
         _log.info("用户登录(用户名称): {}", loginTo);
-        UserLoginRo userLoginRo = sucUserSvc.loginByUserName(loginTo);
+        final UserLoginRo userLoginRo = sucUserSvc.loginByUserName(loginTo);
         _log.info("调用用户中心的方法获取到: {}", userLoginRo);
-        PfmUserLoginRo ro = dozerMapper.map(userLoginRo, PfmUserLoginRo.class);
+        final PfmUserLoginRo ro = dozerMapper.map(userLoginRo, PfmUserLoginRo.class);
         if (LoginResultDic.SUCCESS == userLoginRo.getResult()) {
             ro.setMenus(pfmMenuMapper.selectByUserIdAndSysId(ro.getUserId(), loginTo.getSysId()));
             ro.setUrns(pfmUrnMapper.selectByUserIdAndSysId(ro.getUserId(), loginTo.getSysId()));
@@ -68,12 +69,12 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
      * 获取当前用户信息
      */
     @Override
-    public PfmCurrentUserRo getCurrentUser(String sysId) {
+    public PfmCurrentUserRo getCurrentUser(final String sysId) {
         _log.info("获取当前用户信息: sysId={}", sysId);
-        CurrentUserRo currentUserRo = sucUserSvc.getCurrentUser();
+        final CurrentUserRo currentUserRo = sucUserSvc.getCurrentUser();
         _log.info("调用用户中心的方法获取到: {}", currentUserRo);
         if (currentUserRo != null) {
-            PfmCurrentUserRo ro = dozerMapper.map(currentUserRo, PfmCurrentUserRo.class);
+            final PfmCurrentUserRo ro = dozerMapper.map(currentUserRo, PfmCurrentUserRo.class);
             ro.setMenus(pfmMenuMapper.selectByUserIdAndSysId(ro.getUserId(), sysId));
             ro.setUrns(pfmUrnMapper.selectByUserIdAndSysId(ro.getUserId(), sysId));
             return ro;
