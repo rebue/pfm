@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import rebue.pfm.mo.PfmMenuMo;
+import rebue.pfm.mo.PfmRoleMo;
 import rebue.suc.ro.UserLoginRo;
 
 @JsonInclude(Include.NON_NULL)
@@ -14,6 +15,11 @@ public class PfmUserLoginRo extends UserLoginRo {
      * 用户被授权访问的菜单
      */
     private List<PfmMenuMo> menus;
+
+	/**
+	 * 用户拥有的角色
+	 */
+	private List<PfmRoleMo> roles;
 
     /**
      * 用户被授权访问的链接
@@ -35,12 +41,21 @@ public class PfmUserLoginRo extends UserLoginRo {
     public void setMenus(List<PfmMenuMo> menus) {
         this.menus = menus;
     }
+    
+    
 
-    @Override
-    public String toString() {
-        return "PfmUserLoginRo [menus=" + menus + ", urns=" + urns + ", getUserId()=" + getUserId() + ", getResult()=" + getResult() + ", getNickname()=" + getNickname()
-                + ", getFace()=" + getFace() + ", getOrgId()=" + getOrgId() + ", getSign()=" + getSign() + ", getExpirationTime()=" + getExpirationTime() + ", getMsg()=" + getMsg()
-                + "]";
-    }
+	public List<PfmRoleMo> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<PfmRoleMo> roles) {
+		this.roles = roles;
+	}
+
+	@Override
+	public String toString() {
+		return "PfmUserLoginRo [menus=" + menus + ", roles=" + roles + ", urns=" + urns + "]";
+	}
+
 
 }

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/9/19 20:44:36                           */
+/* Created on:     2019/3/23 11:39:56                           */
 /*==============================================================*/
 
 
@@ -113,6 +113,7 @@ create table PFM_ROLE
    ID                   bigint not null comment '角色ID',
    SYS_ID               varchar(20) not null comment '系统ID',
    NAME                 varchar(20) not null comment '角色名称',
+   INDEX_PATH           varchar(70) comment '首页路径',
    IS_ENABLED           bool not null default true comment '是否启用',
    ORDER_NO             tinyint not null comment '顺序号',
    REMARK               varchar(50) comment '角色备注',

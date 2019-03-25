@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.dozermapper.core.Mapper;
 
 import rebue.pfm.mapper.PfmMenuMapper;
+import rebue.pfm.mapper.PfmRoleMapper;
 import rebue.pfm.mapper.PfmUrnMapper;
 import rebue.pfm.ro.PfmCurrentUserRo;
 import rebue.pfm.ro.PfmUserLoginRo;
@@ -42,10 +43,13 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
     protected PfmMenuMapper     pfmMenuMapper;
     @Resource
     protected PfmUrnMapper      pfmUrnMapper;
-
+    
+    @Resource
+    protected PfmRoleMapper      PfmRoleMapper;
+    
     @Resource
     private SucUserSvc          sucUserSvc;
-
+    
     @Resource
     private Mapper              dozerMapper;
 
@@ -61,6 +65,7 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
         if (LoginResultDic.SUCCESS == userLoginRo.getResult()) {
             ro.setMenus(pfmMenuMapper.selectByUserIdAndSysId(ro.getUserId(), loginTo.getSysId()));
             ro.setUrns(pfmUrnMapper.selectByUserIdAndSysId(ro.getUserId(), loginTo.getSysId()));
+            ro.setRoles(PfmRoleMapper.selectByUserId(ro.getUserId()));
         }
         return ro;
     }

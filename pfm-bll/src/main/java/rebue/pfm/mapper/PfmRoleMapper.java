@@ -93,4 +93,10 @@ public interface PfmRoleMapper extends MybatisBaseMapper<PfmRoleMo, Long> {
      */
     @Update("UPDATE PFM_ROLE SET IS_ENABLED=#{isEnabled,jdbcType=TINYINT} WHERE ID=#{id,jdbcType=BIGINT}")
     int roleEnabled(@Param("id") Long id, @Param("isEnabled") boolean isEnabled);
+    
+    /**
+     * 获取指定系统的角色列表
+     */
+    @Select("SELECT * FROM pfm.PFM_ROLE where id in(select ROLE_ID from PFM_USER_ROLE where USER_ID=#{userId,jdbcType=BIGINT})")
+    public List<PfmRoleMo>  selectByUserId(@Param("userId") Long userId);
 }

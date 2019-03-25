@@ -69,6 +69,15 @@ public class PfmRoleMo implements Serializable {
     private String remark;
 
     /**
+     *    首页路径
+     *
+     *    数据库字段: PFM_ROLE.INDEX_PATH
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    private String indexPath;
+
+    /**
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     private static final long serialVersionUID = 1L;
@@ -206,6 +215,28 @@ public class PfmRoleMo implements Serializable {
     }
 
     /**
+     *    首页路径
+     *
+     *    数据库字段: PFM_ROLE.INDEX_PATH
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public String getIndexPath() {
+        return indexPath;
+    }
+
+    /**
+     *    首页路径
+     *
+     *    数据库字段: PFM_ROLE.INDEX_PATH
+     *
+     *    @mbg.generated 自动生成，如需修改，请删除本行
+     */
+    public void setIndexPath(String indexPath) {
+        this.indexPath = indexPath;
+    }
+
+    /**
      *    @mbg.generated 自动生成，如需修改，请删除本行
      */
     @Override
@@ -220,6 +251,7 @@ public class PfmRoleMo implements Serializable {
         sb.append(", isEnabled=").append(isEnabled);
         sb.append(", orderNo=").append(orderNo);
         sb.append(", remark=").append(remark);
+        sb.append(", indexPath=").append(indexPath);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
