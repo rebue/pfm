@@ -1,6 +1,8 @@
 package rebue.pfm.ctrl;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,12 @@ public class PfmUserLoginCtrl {
     @PostMapping("/user/login/by/user/name")
     PfmUserLoginRo loginByUserName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req, HttpServletResponse resp) {
         _log.info("loginByUserName: {}", loginTo);
+        //添加领域Id，后台只有平台和商家商家能登陆
+        List<String> domainId = new ArrayList<String>();
+        domainId.add("bussines");
+        domainId.add("platform");        
+        loginTo.setDomainId(domainId);
+        
         PfmUserLoginRo ro = svc.loginByUserName(loginTo);
         if (LoginResultDic.SUCCESS.equals(ro.getResult())) {
             JwtUtils.addCookie(ro.getSign(), ro.getExpirationTime(), resp);
