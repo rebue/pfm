@@ -260,6 +260,16 @@ public class PfmUserRoleSvcImpl extends MybatisBaseSvcImpl<PfmUserRoleMo, java.l
         _log.info("unadded: " + unadded);
         return unadded;
     }
+    
+    /**
+     * 根据旧用户id替换新用户id
+     */
+	@Override
+	public int updateByUserId(Long oldUserId, Long userId) {
+		int result = _mapper.updateByUserId(oldUserId, userId);
+		_log.info("根据旧用户id替换新用户id的返回值：",result);
+		return result;
+	}
 
 //    /**
 //     * 添加用户角色

@@ -97,7 +97,9 @@ public interface PfmUserRoleSvc extends MybatisBaseSvc<PfmUserRoleMo, java.lang.
      *            未添加用户第几页
      */
     UsersRo listAddedAndUnaddedUsers(Long roleId, Integer pageSize, String addedKeys, Integer addedPageNum, String unaddedKeys, Integer unaddedPageNum);
-
+    
+    
+    int updateByUserId(Long oldUserId ,Long userId);
 //    /**
 //     * 添加用户角色
 //     */

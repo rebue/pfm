@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -173,7 +174,19 @@ public class PfmUserRoleCtrl {
         }
         return svc.listAddedAndUnaddedUsers(id, pageSize, null, pageNum, null, pageNum);
     }
-
+    
+    /**
+     * 根据旧用户id替换新用户id
+     * @param oldUserId
+     * @param userId
+     * @return
+     */
+    @PutMapping("/pfm/userrole/updateByUserId")
+    int updateByUserId(@RequestParam("oldUserId") Long oldUserId, @RequestParam("userId") Long userId) {
+		_log.info("开始根据旧用户id替换新用户id,参数为：oldUserId-{},userId-{}",oldUserId,userId);
+		return svc.updateByUserId(oldUserId, userId);
+    }
+    
 //
 //    /**
 //     * 删除用户角色

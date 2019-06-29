@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import rebue.pfm.mo.PfmUserRoleMo;
 import rebue.robotech.mapper.MybatisBaseMapper;
 
@@ -89,4 +91,13 @@ public interface PfmUserRoleMapper extends MybatisBaseMapper<PfmUserRoleMo, Long
      */
     @Select("select USER_ID from PFM_USER_ROLE where ROLE_ID = #{roleId,jdbcType=BIGINT}")
     List<Long> selectUserIdByRoleId(Long roleId);
+    
+    /**
+     * 根据用户id更新信息
+     * @param oldUserId
+     * @param userId
+     * @return
+     */
+    @Update("update PFM_USER_ROLE set USER_ID=#{userId,jdbcType=BIGINT} where USER_ID=#{oldUserId,jdbcType=BIGINT}")
+    int updateByUserId(@Param("oldUserId") Long oldUserId,@Param("userId") Long userId);
 }
