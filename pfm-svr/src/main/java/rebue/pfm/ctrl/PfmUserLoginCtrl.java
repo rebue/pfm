@@ -1,8 +1,6 @@
 package rebue.pfm.ctrl;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -28,20 +26,34 @@ public class PfmUserLoginCtrl {
     private static final Logger _log = LoggerFactory.getLogger(PfmUserLoginCtrl.class);
 
     @Resource
-    private PfmUserLoginSvc     svc;
+    private PfmUserLoginSvc svc;
 
     /**
      * 用户登录(用户名称)
      */
     @PostMapping("/user/login/by/user/name")
-    PfmUserLoginRo loginByUserName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req, HttpServletResponse resp) {
+    PfmUserLoginRo loginByUserName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req,
+            HttpServletResponse resp) {
         _log.info("loginByUserName: {}", loginTo);
-        //添加领域Id，后台只有平台和商家商家能登陆
-        List<String> domainId = new ArrayList<String>();
-        domainId.add("bussines");
-        domainId.add("platform");        
-        loginTo.setDomainId(domainId);
-        
+        // 添加领域Id，平台后台只有平台能登陆
+        loginTo.setDomainId("platform");
+
+        PfmUserLoginRo ro = svc.loginByUserName(loginTo);
+        if (LoginResultDic.SUCCESS.equals(ro.getResult())) {
+            JwtUtils.addCookie(ro.getSign(), ro.getExpirationTime(), resp);
+        }
+        return ro;
+    }
+
+    /**
+     * 商家登录(用户名称)
+     */
+    @PostMapping("/bussinesr/login/by/user/name")
+    PfmUserLoginRo loginByBussinesName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req,
+            HttpServletResponse resp) {
+        // 添加领域Id，商家后台只有商家能登陆
+        loginTo.setDomainId("bussines");
+        _log.info("loginByBussinesName: {}", loginTo);
         PfmUserLoginRo ro = svc.loginByUserName(loginTo);
         if (LoginResultDic.SUCCESS.equals(ro.getResult())) {
             JwtUtils.addCookie(ro.getSign(), ro.getExpirationTime(), resp);
