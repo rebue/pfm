@@ -51,10 +51,15 @@ public class PfmUserLoginCtrl {
     @PostMapping("/bussinesr/login/by/user/name")
     PfmUserLoginRo loginByBussinesName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req,
             HttpServletResponse resp) {
+        PfmUserLoginRo ro = new PfmUserLoginRo();
+        if (loginTo.getOrgId() == null) {
+            ro.setMsg("登录失败,组织id为空");
+            ro.setResult(LoginResultDic.PARAM_ERROR);
+        }
         // 添加领域Id，商家后台只有商家能登陆
         loginTo.setDomainId("bussines");
         _log.info("loginByBussinesName: {}", loginTo);
-        PfmUserLoginRo ro = svc.loginByUserName(loginTo);
+        ro = svc.loginByUserName(loginTo);
         if (LoginResultDic.SUCCESS.equals(ro.getResult())) {
             JwtUtils.addCookie(ro.getSign(), ro.getExpirationTime(), resp);
         }
