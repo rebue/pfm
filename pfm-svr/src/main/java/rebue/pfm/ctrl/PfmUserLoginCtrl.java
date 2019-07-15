@@ -49,7 +49,7 @@ public class PfmUserLoginCtrl {
      * 商家登录(用户名称)
      */
     @PostMapping("/bussinesr/login/by/user/name")
-    PfmUserLoginRo loginByBussinesName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req,
+    PfmUserLoginRo loginByBussinessName(@RequestBody LoginByUserNameTo loginTo, HttpServletRequest req,
             HttpServletResponse resp) {
         PfmUserLoginRo ro = new PfmUserLoginRo();
         if (loginTo.getOrgId() == null) {
@@ -58,7 +58,7 @@ public class PfmUserLoginCtrl {
         }
         // 添加领域Id，商家后台只有商家能登陆
         loginTo.setDomainId("bussines");
-        _log.info("loginByBussinesName: {}", loginTo);
+        _log.info("loginByBussinessName: {}", loginTo);
         ro = svc.loginByUserName(loginTo);
         if (LoginResultDic.SUCCESS.equals(ro.getResult())) {
             JwtUtils.addCookie(ro.getSign(), ro.getExpirationTime(), resp);

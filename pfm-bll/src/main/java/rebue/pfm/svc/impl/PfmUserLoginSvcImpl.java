@@ -40,18 +40,18 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
     private static final Logger _log = LoggerFactory.getLogger(PfmUserLoginSvcImpl.class);
 
     @Resource
-    protected PfmMenuMapper     pfmMenuMapper;
+    protected PfmMenuMapper pfmMenuMapper;
     @Resource
-    protected PfmUrnMapper      pfmUrnMapper;
-    
+    protected PfmUrnMapper  pfmUrnMapper;
+
     @Resource
-    protected PfmRoleMapper      PfmRoleMapper;
-    
+    protected PfmRoleMapper PfmRoleMapper;
+
     @Resource
-    private SucUserSvc          sucUserSvc;
-    
+    private SucUserSvc sucUserSvc;
+
     @Resource
-    private Mapper              dozerMapper;
+    private Mapper dozerMapper;
 
     /**
      * 用户登录(用户名称)
@@ -60,6 +60,23 @@ public class PfmUserLoginSvcImpl implements PfmUserLoginSvc {
     public PfmUserLoginRo loginByUserName(final LoginByUserNameTo loginTo) {
         _log.info("用户登录(用户名称): {}", loginTo);
         final UserLoginRo userLoginRo = sucUserSvc.loginByUserName(loginTo);
+        _log.info("调用用户中心的方法获取到: {}", userLoginRo);
+        final PfmUserLoginRo ro = dozerMapper.map(userLoginRo, PfmUserLoginRo.class);
+        if (LoginResultDic.SUCCESS == userLoginRo.getResult()) {
+            ro.setMenus(pfmMenuMapper.selectByUserIdAndSysId(ro.getUserId(), loginTo.getSysId()));
+            ro.setUrns(pfmUrnMapper.selectByUserIdAndSysId(ro.getUserId(), loginTo.getSysId()));
+            ro.setRoles(PfmRoleMapper.selectByUserId(ro.getUserId()));
+        }
+        return ro;
+    }
+
+    /**
+     * 商家登录(用户名称)
+     */
+    @Override
+    public PfmUserLoginRo loginByBussinessName(final LoginByUserNameTo loginTo) {
+        _log.info("用户登录(商家名称): {}", loginTo);
+        final UserLoginRo userLoginRo = sucUserSvc.loginByBusinessName(loginTo);
         _log.info("调用用户中心的方法获取到: {}", userLoginRo);
         final PfmUserLoginRo ro = dozerMapper.map(userLoginRo, PfmUserLoginRo.class);
         if (LoginResultDic.SUCCESS == userLoginRo.getResult()) {

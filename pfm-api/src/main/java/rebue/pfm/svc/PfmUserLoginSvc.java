@@ -11,6 +11,11 @@ public interface PfmUserLoginSvc {
     PfmUserLoginRo loginByUserName(LoginByUserNameTo loginTo);
 
     /**
+     * 用户登录(用户名称)
+     */
+    PfmUserLoginRo loginByBussinessName(LoginByUserNameTo loginTo);
+
+    /**
      * 获取当前用户信息
      */
     PfmCurrentUserRo getCurrentUser(String sysId);
