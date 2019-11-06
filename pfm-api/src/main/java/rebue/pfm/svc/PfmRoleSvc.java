@@ -16,7 +16,7 @@ public interface PfmRoleSvc extends MybatisBaseSvc<PfmRoleMo, java.lang.Long> {
     /**
      * 删除角色
      */
-    Ro delEx(long id);
+//    Ro delEx(long id);
 
     /**
      * 设置角色是否启用

@@ -88,9 +88,9 @@ public class PfmUserRoleSvcImpl extends MybatisBaseSvcImpl<PfmUserRoleMo, java.l
      */
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-    public void delUserRoles(List<Long> moveIds) {
+    public void delUserRoles(Long userId,List<Long> moveIds) {
         for (Long roleId : moveIds) {
-            _mapper.deleteByRoleId(roleId);
+            _mapper.deleteByRoleIdAndUserId(userId,roleId);
         }
     }
 

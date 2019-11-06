@@ -69,26 +69,26 @@ public class PfmRoleSvcImpl extends MybatisBaseSvcImpl<PfmRoleMo, java.lang.Long
 	/**
 	 * 删除角色
 	 */
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public Ro delEx(long id) {
-		Ro ro = new Ro();
-		_log.info("删除角色的参数为：{}", id);
-		// 根据角色id删除动作
-		pfmRoleActiMapper.deleteByRoleId(id);
-		// 根据角色id删除用户角色
-		pfmUserRoleMapper.deleteByRoleId(id);
-		int deleteByPrimaryKeyResult = _mapper.deleteByPrimaryKey(id);
-		_log.info("删除角色的返回值为：{}", deleteByPrimaryKeyResult);
-		if (deleteByPrimaryKeyResult != 1) {
-			_log.error("删除角色出错，角色ｉｄ为：{}", id);
-			throw new RuntimeException("删除失败");
-		}
-		_log.error("删除角色成功，角色ｉｄ为：{}", id);
-		ro.setResult(ResultDic.SUCCESS);
-		ro.setMsg("删除成功");
-		return ro;
-	}
+//	@Override
+//	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+//	public Ro delEx(long id) {
+//		Ro ro = new Ro();
+//		_log.info("删除角色的参数为：{}", id);
+//		// 根据角色id删除动作
+//		pfmRoleActiMapper.deleteByRoleId(id);
+//		// 根据角色id删除用户角色
+//		pfmUserRoleMapper.deleteByRoleId(id);
+//		int deleteByPrimaryKeyResult = _mapper.deleteByPrimaryKey(id);
+//		_log.info("删除角色的返回值为：{}", deleteByPrimaryKeyResult);
+//		if (deleteByPrimaryKeyResult != 1) {
+//			_log.error("删除角色出错，角色ｉｄ为：{}", id);
+//			throw new RuntimeException("删除失败");
+//		}
+//		_log.error("删除角色成功，角色ｉｄ为：{}", id);
+//		ro.setResult(ResultDic.SUCCESS);
+//		ro.setMsg("删除成功");
+//		return ro;
+//	}
 
 	/**
 	 * 是否启用角色

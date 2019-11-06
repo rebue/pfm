@@ -149,22 +149,25 @@ public class PfmRoleCtrl {
         return svc.listBySysId(sysId);
     }
 
-    /**
-     * 删除角色信息
-     */
-    @DeleteMapping("/pfm/role")
-    Ro del(@RequestParam("id") java.lang.Long id) {
-        _log.info("save PfmRoleMo:" + id);
-        Ro ro = new Ro();
-        try {
-            return svc.delEx(id);
-        } catch (Exception e) {
-            String msg = e.getMessage();
-            ro.setMsg(msg);
-            ro.setResult(ResultDic.FAIL);
-            return ro;
-        }
-    }
+//    /**
+//     * 删除角色信息  这里注释掉还有其后面一系列的方法也被注释掉是因为这个方法
+//       少传了个用户id进来，只传了角色id，然后删除的时候所有是这个角色的用户的
+//       该角色都被去掉，在搜索的时候发现这个方法没有被引用，所以注释掉，后续需要
+//       使用再打开，但切记将用户id传进来。2019-11-6  徐亚明
+//     */
+//    @DeleteMapping("/pfm/role")
+//    Ro del(@RequestParam("id") java.lang.Long id) {
+//        _log.info("save PfmRoleMo:" + id);
+//        Ro ro = new Ro();
+//        try {
+//            return svc.delEx(id);
+//        } catch (Exception e) {
+//            String msg = e.getMessage();
+//            ro.setMsg(msg);
+//            ro.setResult(ResultDic.FAIL);
+//            return ro;
+//        }
+//    }
 
     /**
      * 设置角色是否启用

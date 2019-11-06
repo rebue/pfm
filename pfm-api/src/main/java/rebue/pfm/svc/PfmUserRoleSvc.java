@@ -40,7 +40,7 @@ public interface PfmUserRoleSvc extends MybatisBaseSvc<PfmUserRoleMo, java.lang.
     /**
      * 移除用户的角色
      */
-    void delUserRoles(List<Long> moveIds);
+    void delUserRoles(Long userId,List<Long> moveIds);
 
     /**
      * 角色添加用户

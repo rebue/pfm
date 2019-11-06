@@ -65,7 +65,7 @@ public class PfmUserRoleCtrl {
     @DeleteMapping("/pfm/userrole")
     UserRolesRo del(@RequestBody UserMoveRolesTo to) {
         _log.info("delUserRoles: {}", to);
-        svc.delUserRoles(to.getMoveIds());
+        svc.delUserRoles(to.getUserId(),to.getMoveIds());
         return listUserRoles(to.getSysId(), to.getUserId());
     }
 

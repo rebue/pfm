@@ -71,8 +71,8 @@ public interface PfmUserRoleMapper extends MybatisBaseMapper<PfmUserRoleMo, Long
     /**
      * 根据角色id删除用户角色
      */
-    @Delete("delete from PFM_USER_ROLE where ROLE_ID = #{roleId,jdbcType=BIGINT}")
-    int deleteByRoleId(@Param("roleId") Long roleId);
+    @Delete("delete from PFM_USER_ROLE where ROLE_ID = #{roleId,jdbcType=BIGINT} and   USER_ID = #{userId,jdbcType=BIGINT} ")
+    int deleteByRoleIdAndUserId(@Param("userId") Long userId,@Param("roleId") Long roleId);
 
     /**
      * 根据用户id删除用户角色
